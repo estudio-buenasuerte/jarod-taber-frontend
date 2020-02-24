@@ -17,8 +17,10 @@ const Layout = ({ children }) => {
       <SEO title="JAROD TABER" />
       <Header visible={visible === true ? true : false}/>
         <aside className='title'>
-          <h1 className='jarod'>Jarod Taber</h1>
-          <button className='information' onClick={() => setVisible(!visible)}>Information</button>
+          <span className='title-container'>
+            <h1 className='jarod'>Jarod Taber</h1>
+            <button className='information' onClick={() => setVisible(!visible)}>Information</button>
+          </span>
         </aside>
       <Footer />
     </main>

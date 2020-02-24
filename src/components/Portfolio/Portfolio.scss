@@ -2,7 +2,7 @@
 
 $neue-haas-unica : 'neue-haas-unica', 'Helvetica', sans-serif;
 
-body {
+@mixin haas {
     font-family: $neue-haas-unica;
     font-size: 11px;
     line-height: 15px;
@@ -12,32 +12,44 @@ body {
     }
 }
 
+body {
+    @include haas;
+}
+
 .portfolio {
     min-height: 100vh;
+    
     .title {
         position: fixed;
         top: 50%;
         text-align: center;
-        left: 25%;
-        right: 25%;
-        @media (min-width: 768px) {
-            left: 45%;
-            right: 45%;
-        }
+        left: 0;
+        right: 0;
         display: flex;
-        justify-content: space-between;
-        h1, button{
-            text-transform: uppercase;
-        }
-        button {
-            cursor: pointer;
-            font-size: 1em;
-            border: none;
-            background-color: transparent;
-            &:focus {
-                outline: 1px solid transparent;
+        .title-container {
+            margin: 0 auto;
+            display: flex;
+
+            h1, button{
+                text-transform: uppercase;
+            }
+            h1 {
+                margin-right: 2em;
+            }
+            button {
+                cursor: pointer;
+                font-size: 1em;
+                border: none;
+                background-color: transparent;
+                @include haas;
+                padding: 0;
+    
+                &:focus {
+                    outline: 1px solid transparent;
+                }
             }
         }
+        
         
 
     }
