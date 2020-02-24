@@ -13,8 +13,4 @@
 .env
 .cache
 
-#webfonts
-*.woff
-*.woff2
-*.eot
-*.ttf
+

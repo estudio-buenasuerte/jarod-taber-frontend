@@ -1,9 +1,14 @@
-@import url("https://use.typekit.net/jan4ryt.css");
+@font-face {
+  font-family: "Unica77LLWeb-Medium";
+  src: url("../../font/Unica77LLWeb-Medium.woff2") format("woff2"),
+    url("../../font/Unica77LLWeb-Medium.woff") format("woff"),
+    url("../../font/Unica77LLSub-MediumSubset.woff2") format("woff2"),
+    url("../../font/Unica77LLSub-MediumSubset.woff") format("woff");
+}
 
-$neue-haas-unica : 'neue-haas-unica', 'Helvetica', sans-serif;
 
 @mixin haas {
-    font-family: $neue-haas-unica;
+    font-family: "Unica77LLWeb-Medium", Helvetica, Arial, sans-serif;
     font-size: 11px;
     line-height: 15px;
     @media (min-width: 768px) {
