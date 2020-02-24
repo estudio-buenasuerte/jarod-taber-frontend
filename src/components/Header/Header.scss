@@ -1,0 +1,16 @@
+header.information {
+	padding: 10px;
+	transition: .25s opacity ease;
+	opacity: 0;
+	&.visible {
+		opacity: 1;
+	}
+	a {
+		color: inherit;
+		text-decoration: none;
+		transition: .25s color ease;
+		&:hover {
+			color: #BABABA ;
+		}
+	}
+}
