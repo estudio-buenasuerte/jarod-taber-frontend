@@ -15,14 +15,22 @@
         opacity: 0;
         transition: .25s opacity ease;
         display: flex;
+        flex-direction: column;
+        @media (min-width: 768px) {
+            flex-direction: row;
+            li {
+                margin-right: 1em;
+            }
+        }
         justify-content: center;
         padding-bottom: 1em;
         &.visible {
             opacity: 1;
         }
-        li {
-            margin-right: 1em;
+        .name {
+            text-transform: uppercase;
         }
+        
     }
     .hover {
         -webkit-appearance: none;
