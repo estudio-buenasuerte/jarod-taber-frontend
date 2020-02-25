@@ -1,0 +1,29 @@
+.project-asset {
+    &.fullscreen {
+        height: 100vh;
+        video{
+            
+            position: fixed;
+            left: -33vw;
+            right: -33vw;
+            bottom: 0;
+            min-width: 100%; 
+            min-height: 100%;
+            @media (min-width: 768px) {
+                left: -25vw;
+                right: -25vw;
+            }
+            @media (min-width: 1024px) {
+                left: 0;
+                right: 0;
+            }
+        }
+        img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+        }
+    }
+}

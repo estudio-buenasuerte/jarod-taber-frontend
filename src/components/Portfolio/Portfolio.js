@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useStaticQuery, graphql } from 'gatsby'
 import PropTypes from "prop-types"
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
+import ProjectAsset from '../ProjectAsset/ProjectAsset'
 import SEO from '../seo'
 import 'reset-css'
 import './Portfolio.scss'
@@ -19,7 +20,7 @@ const Layout = ({ children }) => {
             task
             name
           }
-          isFullBleed
+          isFullScreen
           title
           projectAsset {
             _key
@@ -27,18 +28,13 @@ const Layout = ({ children }) => {
             image {
               _key
               asset {
-                source {
-                  url
-                }
+                url
               }
             }
             video {
               _key
               asset {
                 url
-                source {
-                  url
-                }
               }
             }
           }
@@ -50,19 +46,47 @@ const Layout = ({ children }) => {
 
   const [visible, setVisible] = useState(false)
   const [projects] = useState(data.allSanityProject.nodes)
-  const [currentProject] = useState(data.allSanityProject.nodes[0])
+  const [currentProject, setCurrentProject] = useState(data.allSanityProject.nodes[0])
+  const [index, setIndex] = useState(0)
+  
+  const clickToShuffle = e => {
+    let index = projects.indexOf(currentProject)
+    
+    if (index === projects.length - 1) {
+      index = 0
+    }
+    setCurrentProject(projects[index + 1])
+  }
+
+  useEffect(() => {
+    if (projects.length) {
+      
+      const interval = setInterval(() => {
+        if (index === projects.length - 1) {
+          
+          setIndex(0)
+          setCurrentProject(projects[0])
+          return
+        } else {
+          setCurrentProject(projects[index + 1])
+          setIndex(index + 1)
+        }
+      }, 8000);
+      return () => clearInterval(interval)
+    }
+  }, [projects, index]);
 
   return (
-    <main className='portfolio'>
+    <main className={`portfolio${currentProject.isFullScreen ? ' fullscreen' : ''}`}>
       <SEO title="JAROD TABER" />
       <Header visible={visible === true ? true : false}/>
-        <aside className='title'>
+      <aside className='title'>
           <span className='title-container'>
-            <h1 className='jarod'>Jarod Taber</h1>
+            <h1 className='jarod' onClick={() => setVisible(false)}>Jarod Taber</h1>
             <button className='information' onClick={() => setVisible(!visible)}>Information</button>
           </span>
         </aside>
-        
+      <ProjectAsset asset={{ isFullScreen: currentProject.isFullScreen , projectAsset: currentProject.projectAsset, alt: currentProject.title }} onClick={clickToShuffle} />
       <Footer isFullScreen={currentProject.isFullScreen} credits={currentProject.credits}/>
     </main>
   )

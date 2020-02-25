@@ -1,5 +1,9 @@
 header.information {
-	padding: 10px;
+	position: fixed;
+    top: 10px;
+    left: 10px;
+	right: 10px;
+	z-index: 1;
 	transition: .25s opacity ease;
 	opacity: 0;
 	&.visible {
