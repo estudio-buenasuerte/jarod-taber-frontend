@@ -1,4 +1,39 @@
 .project-asset {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 100vh;
+    .img-assets {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        max-width: 75%;
+        margin: 0 auto;
+        // overflow: hidden;
+        @media (min-width: 1024px) {
+            flex-direction: row;
+            max-width: 90%;
+        }
+        .img-asset {
+            display: none;
+            margin-left: 50px;
+            // width: auto;
+            &:first-of-type {
+                margin-left: 0;
+            }
+            @media (min-width: 1024px) {
+                flex: 25%;
+                max-width: 50%;
+                width: 100%;
+                display: block;
+            }
+            &.mobile {
+                display: block;
+            }
+        }
+    }
     &.fullscreen {
         
         video{
@@ -24,10 +59,4 @@
             bottom: 0;
         }
     }
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    bottom: 0;
 }

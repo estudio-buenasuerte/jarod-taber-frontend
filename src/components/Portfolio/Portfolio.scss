@@ -30,6 +30,31 @@ img {
     min-height: 100%;
     display: flex;
     flex-direction: column;
+    .left,
+    .right {
+        z-index: 4;
+        border: none;
+        background-color: transparent;
+        &:focus {
+            outline: 1px solid transparent;
+        }
+    }
+    .left {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 45%;
+        cursor: w-resize;
+    }
+    .right {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 45%;
+        cursor: e-resize;
+    }
     
     .title {
         position: fixed;
@@ -42,6 +67,7 @@ img {
         .title-container {
             margin: 0 auto;
             display: flex;
+            z-index: 5;
 
             h1, button{
                 text-transform: uppercase;

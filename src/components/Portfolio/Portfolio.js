@@ -25,16 +25,19 @@ const Layout = ({ children }) => {
           projectAsset {
             _key
             _type
-            image {
-              _key
-              asset {
-                url
-              }
-            }
             video {
               _key
               asset {
                 url
+                source {
+                  url
+                }
+              }
+            }
+            image {
+              asset {
+                url
+                id
               }
             }
           }
@@ -49,13 +52,24 @@ const Layout = ({ children }) => {
   const [currentProject, setCurrentProject] = useState(data.allSanityProject.nodes[0])
   const [index, setIndex] = useState(0)
   
-  const clickToShuffle = e => {
-    let index = projects.indexOf(currentProject)
-    
-    if (index === projects.length - 1) {
-      index = 0
+  
+  const toggleLeft = () => {
+    let newIndex = index - 1
+    if (newIndex < 0) {
+      newIndex = projects.length -1
     }
-    setCurrentProject(projects[index + 1])
+    setIndex(newIndex)
+    setCurrentProject(projects[newIndex])
+
+  }
+
+  const toggleRight = () => {
+    let newIndex = index + 1
+    if (newIndex >= projects.length ) {
+      newIndex = 0
+    }
+    setIndex(newIndex)
+    setCurrentProject(projects[newIndex])
   }
 
   useEffect(() => {
@@ -79,14 +93,22 @@ const Layout = ({ children }) => {
   return (
     <main className={`portfolio${currentProject.isFullScreen ? ' fullscreen' : ''}`}>
       <SEO title="JAROD TABER" />
+      
       <Header visible={visible === true ? true : false}/>
+      
+      <button className='left' onClick={toggleLeft}></button>
+      
       <aside className='title'>
           <span className='title-container'>
             <h1 className='jarod' onClick={() => setVisible(false)}>Jarod Taber</h1>
             <button className='information' onClick={() => setVisible(!visible)}>Information</button>
           </span>
         </aside>
-      <ProjectAsset asset={{ isFullScreen: currentProject.isFullScreen , projectAsset: currentProject.projectAsset, alt: currentProject.title }} onClick={clickToShuffle} />
+      
+      <button className='right' onClick={toggleRight}></button>
+      
+      <ProjectAsset asset={{ isFullScreen: currentProject.isFullScreen , projectAsset: currentProject.projectAsset, alt: currentProject.title }} />
+      
       <Footer isFullScreen={currentProject.isFullScreen} credits={currentProject.credits}/>
     </main>
   )

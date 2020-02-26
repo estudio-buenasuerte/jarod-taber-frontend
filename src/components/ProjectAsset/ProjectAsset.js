@@ -6,12 +6,16 @@ const ProjectAsset = ({asset, onClick}) => {
     
     let projectAsset
 
-    if (asset.projectAsset.image) {
-        
+    if (asset.projectAsset.image.length > 0) {
         projectAsset = (
-            <img src={asset.projectAsset.image.asset.url} alt={asset.alt}/>
+            <aside className='img-assets'>
+                {asset.projectAsset.image.map(img => {
+                    return <div key={img.asset.id} className={`img-asset${img === asset.projectAsset.image[0] ? ' mobile' : ''}`}><img src={img.asset.url}  alt={asset.alt} /></div>
+                })}
+            </aside>
         )
     } else {
+        
         projectAsset = (
             <Video
                 src={asset.projectAsset.video.asset.url}
