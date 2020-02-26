@@ -20,6 +20,7 @@ const Footer = props => {
 				</ul>
 			)}
 			<button className='hover' 
+			onClick={() => setVisible(!visible)}
 			onMouseEnter={() => setVisible(true)} 
 			onMouseLeave={() => setVisible(false)}>
 				<div className='circle'/>
