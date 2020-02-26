@@ -26,6 +26,10 @@ img {
     width: 100%;
 }
 
+button {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 .portfolio {
     min-height: 100%;
     display: flex;

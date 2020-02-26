@@ -1,5 +1,6 @@
 import React from 'react'
 import Video from './Video'
+import Img from "gatsby-image"
 import './ProjectAsset.scss'
 
 const ProjectAsset = ({asset, onClick}) => {
@@ -10,7 +11,8 @@ const ProjectAsset = ({asset, onClick}) => {
         projectAsset = (
             <aside className='img-assets'>
                 {asset.projectAsset.image.map(img => {
-                    return <div key={img.asset.id} className={`img-asset${img === asset.projectAsset.image[0] ? ' mobile' : ''}`}><img src={img.asset.url}  alt={asset.alt} /></div>
+                    // debugger;
+                    return <div key={img.asset.id} className={`img-asset${img === asset.projectAsset.image[0] ? ' mobile' : ''}`}><Img fluid={img.asset.fluid}  alt={asset.alt} /></div>
                 })}
             </aside>
         )

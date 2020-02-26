@@ -38,6 +38,25 @@ const Layout = ({ children }) => {
               asset {
                 url
                 id
+                fixed {
+                  base64
+                  aspectRatio
+                  width
+                  height
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                }
+                fluid {
+                  base64
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
+                }
               }
             }
           }
