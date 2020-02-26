@@ -11,7 +11,6 @@ const ProjectAsset = ({asset, onClick}) => {
         projectAsset = (
             <aside className='img-assets'>
                 {asset.projectAsset.image.map(img => {
-                    // debugger;
                     return <div key={img.asset.id} className={`img-asset${img === asset.projectAsset.image[0] ? ' mobile' : ''}`}><Img fluid={img.asset.fluid}  alt={asset.alt} /></div>
                 })}
             </aside>

@@ -104,7 +104,7 @@ const Layout = ({ children }) => {
           setCurrentProject(projects[index + 1])
           setIndex(index + 1)
         }
-      }, 8000);
+      }, 30000);
       return () => clearInterval(interval)
     }
   }, [projects, index]);
