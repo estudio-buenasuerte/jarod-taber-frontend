@@ -39,6 +39,13 @@ button {
         z-index: 4;
         border: none;
         background-color: transparent;
+        width: 27.5%;
+        @media (min-width: 768px) {
+            width: 33%;
+        }
+        @media (min-width: 1024px) {
+            width: 42.5%;
+        }
         &:focus {
             outline: 1px solid transparent;
         }
@@ -48,7 +55,6 @@ button {
         top: 0;
         left: 0;
         bottom: 0;
-        width: 45%;
         cursor: w-resize;
     }
     .right {
@@ -56,7 +62,7 @@ button {
         top: 0;
         right: 0;
         bottom: 0;
-        width: 45%;
+        
         cursor: e-resize;
     }
     
@@ -78,11 +84,14 @@ button {
                 padding: 0;
                 margin: 0;
                 cursor: default;
+                padding: 25px 0;
             }
             h1 {
                 margin-right: 2em;
+                padding-left: 25px;
             }
             button {
+                padding-right: 25px;
                 cursor: pointer;
                 background-color: transparent;
                 @include haas;
