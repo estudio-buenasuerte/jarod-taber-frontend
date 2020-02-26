@@ -108,8 +108,11 @@ button {
     &.fullscreen {
         header.information {
             color: white;
-            a:hover {
-                color: black;
+            a {
+                color: inherit;
+                &:hover {
+                    color: black;
+                }
             }
         }
         .title {
