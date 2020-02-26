@@ -8,7 +8,9 @@
     &.fullscreen {
         color: white;
         .hover {
-            background-color: white;
+            .circle {
+                background-color: white;
+            }
         }
     }
     .credits {
@@ -34,16 +36,23 @@
     }
     .hover {
         -webkit-appearance: none;
-        height: .75rem;
-        width: .75rem;
-        border-radius: 50%;
-        background-color: black;
-        margin: 0 auto 1.5em;
+        background-color: transparent;
+        margin: 0 auto;
         padding: 0;
         border: none;
         cursor: pointer;
+        padding: 5px 5px 10px 5px;
+        @media (min-width: 1024px) {
+            padding: 10px 10px 15px 10px;
+        }
         &:focus {
             outline: 1px solid transparent;
+        }
+        .circle {
+            height: .75rem;
+            width: .75rem;
+            border-radius: 50%;
+            background-color: black;
         }
     }
 }

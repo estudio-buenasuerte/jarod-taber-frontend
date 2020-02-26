@@ -21,7 +21,9 @@ const Footer = props => {
 			)}
 			<button className='hover' 
 			onMouseEnter={() => setVisible(true)} 
-			onMouseLeave={() => setVisible(false)}></button>
+			onMouseLeave={() => setVisible(false)}>
+				<div className='circle'/>
+			</button>
 		</footer>
 	)
 		
