@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
                 url
                 id
                 fixed {
-                  base64
+                  
                   aspectRatio
                   width
                   height
@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
                   srcSetWebp
                 }
                 fluid {
-                  base64
+                  
                   aspectRatio
                   src
                   srcSet
