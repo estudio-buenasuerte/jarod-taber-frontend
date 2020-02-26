@@ -55,15 +55,14 @@ button {
         top: 0;
         left: 0;
         bottom: 0;
-        cursor: w-resize;
+        cursor: url(../../images/arrow/left16.png) 8 8, auto;
     }
     .right {
         position: fixed;
         top: 0;
         right: 0;
         bottom: 0;
-        
-        cursor: e-resize;
+        cursor: url(../../images/arrow/next16.png) 8 8, auto;
     }
     
     .title {
