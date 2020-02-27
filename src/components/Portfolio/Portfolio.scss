@@ -84,6 +84,8 @@ button {
                 margin: 0;
                 cursor: default;
                 padding: 25px 0;
+                color: black;
+                transition: .5s color ease-in-out;
             }
             h1 {
                 margin-right: 2em;

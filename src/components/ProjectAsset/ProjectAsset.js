@@ -1,11 +1,29 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Video from './Video'
 import Img from "gatsby-image"
+// import { Keyframes, Frame } from 'react-keyframes'
 import './ProjectAsset.scss'
 
 const ProjectAsset = ({asset, onClick}) => {
-    
+    const [loaded, setLoaded] = useState(false)
+    const [fadeOut, setFadeOut] = useState(false)
     let projectAsset
+
+    useEffect(() => {
+            const loadInterval = setTimeout(() => {
+                setLoaded(true)
+            }, 500);
+            const fadeInterval = setTimeout(() => {
+                setLoaded(false)
+            }, 9500);
+
+            return () => {
+                setLoaded(false)
+                clearTimeout(loadInterval)
+                clearTimeout(fadeInterval)
+            }
+        
+    }, [asset.projectAsset.video])
 
     if (asset.projectAsset.image.length > 0) {
         projectAsset = (
@@ -27,9 +45,9 @@ const ProjectAsset = ({asset, onClick}) => {
     }
     
     return (
-        <section className={`project-asset${asset.isFullScreen ? ' fullscreen' : ''}`}>
-            {projectAsset}
-        </section>
+            <section className={`project-asset${asset.isFullScreen ? ' fullscreen' : ''}${loaded ? ' visible' : ''}`}>
+                {projectAsset}
+            </section>
     )
 }
 export default ProjectAsset
