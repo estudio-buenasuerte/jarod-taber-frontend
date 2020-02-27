@@ -4,7 +4,7 @@ header.information {
     left: 10px;
 	right: 10px;
 	z-index: 1;
-	transition: .25s color linear, .25s opacity linear;
+	transition: .25s color linear, .25s opacity ease-in-out;
 	opacity: 0;
 	z-index: -1;
 	&.visible {
