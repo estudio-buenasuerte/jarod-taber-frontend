@@ -6,13 +6,13 @@ import './ProjectAsset.scss'
 
 const ProjectAsset = ({asset, onClick}) => {
     const [loaded, setLoaded] = useState(false)
-    
+
     let projectAsset
 
     useEffect(() => {
             const loadInterval = setTimeout(() => {
                 setLoaded(true)
-            }, 500);
+            }, 250);
             const fadeInterval = setTimeout(() => {
                 setLoaded(false)
             }, 9500);
@@ -22,7 +22,7 @@ const ProjectAsset = ({asset, onClick}) => {
                 clearTimeout(loadInterval)
                 clearTimeout(fadeInterval)
             }
-    }, [asset.projectAsset.video])
+    }, [asset.alt])
 
     if (asset.projectAsset.image.length > 0) {
         projectAsset = (
