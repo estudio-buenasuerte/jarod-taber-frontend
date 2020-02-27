@@ -77,8 +77,12 @@ const Layout = ({ children }) => {
     if (newIndex < 0) {
       newIndex = projects.length -1
     }
-    setIndex(newIndex)
-    setCurrentProject(projects[newIndex])
+    const element = document.querySelector('.project-asset')
+    element.classList.remove('visible')
+    setTimeout(() => {
+      setIndex(newIndex)
+      setCurrentProject(projects[newIndex])
+    },500)
 
   }
 
@@ -87,8 +91,12 @@ const Layout = ({ children }) => {
     if (newIndex >= projects.length ) {
       newIndex = 0
     }
-    setIndex(newIndex)
-    setCurrentProject(projects[newIndex])
+    const element = document.querySelector('.project-asset')
+    element.classList.remove('visible')
+    setTimeout(() => {
+      setIndex(newIndex)
+      setCurrentProject(projects[newIndex])
+    },500)
   }
 
   useEffect(() => {

@@ -12,7 +12,7 @@ const ProjectAsset = ({asset, onClick}) => {
     useEffect(() => {
             const loadInterval = setTimeout(() => {
                 setLoaded(true)
-            }, 250);
+            }, 500);
             const fadeInterval = setTimeout(() => {
                 setLoaded(false)
             }, 9500);
