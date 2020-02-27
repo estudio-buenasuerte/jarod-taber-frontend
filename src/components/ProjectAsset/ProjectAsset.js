@@ -6,7 +6,7 @@ import './ProjectAsset.scss'
 
 const ProjectAsset = ({asset, onClick}) => {
     const [loaded, setLoaded] = useState(false)
-    const [fadeOut, setFadeOut] = useState(false)
+    
     let projectAsset
 
     useEffect(() => {
@@ -22,7 +22,6 @@ const ProjectAsset = ({asset, onClick}) => {
                 clearTimeout(loadInterval)
                 clearTimeout(fadeInterval)
             }
-        
     }, [asset.projectAsset.video])
 
     if (asset.projectAsset.image.length > 0) {
@@ -34,7 +33,6 @@ const ProjectAsset = ({asset, onClick}) => {
             </aside>
         )
     } else {
-        
         projectAsset = (
             <Video
                 src={asset.projectAsset.video.asset.url}
