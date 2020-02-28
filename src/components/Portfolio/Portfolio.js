@@ -77,8 +77,12 @@ const Layout = ({ children }) => {
     if (newIndex < 0) {
       newIndex = projects.length -1
     }
-    setIndex(newIndex)
-    setCurrentProject(projects[newIndex])
+    const element = document.querySelector('.project-asset')
+    element.classList.remove('visible')
+    setTimeout(() => {
+      setIndex(newIndex)
+      setCurrentProject(projects[newIndex])
+    },500)
 
   }
 
@@ -87,8 +91,12 @@ const Layout = ({ children }) => {
     if (newIndex >= projects.length ) {
       newIndex = 0
     }
-    setIndex(newIndex)
-    setCurrentProject(projects[newIndex])
+    const element = document.querySelector('.project-asset')
+    element.classList.remove('visible')
+    setTimeout(() => {
+      setIndex(newIndex)
+      setCurrentProject(projects[newIndex])
+    },500)
   }
 
   useEffect(() => {
@@ -104,7 +112,7 @@ const Layout = ({ children }) => {
           setCurrentProject(projects[index + 1])
           setIndex(index + 1)
         }
-      }, 30000);
+      }, 10000);
       return () => clearInterval(interval)
     }
   }, [projects, index]);
@@ -125,7 +133,7 @@ const Layout = ({ children }) => {
         </aside>
       
       <button className='right' onClick={toggleRight}></button>
-      
+
       <ProjectAsset asset={{ isFullScreen: currentProject.isFullScreen , projectAsset: currentProject.projectAsset, alt: currentProject.title }} />
       
       <Footer isFullScreen={currentProject.isFullScreen} credits={currentProject.credits}/>

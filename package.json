@@ -22,6 +22,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-keyframes": "^0.2.3",
     "react-responsive": "^8.0.1",
     "reset-css": "^5.0.1"
   },
