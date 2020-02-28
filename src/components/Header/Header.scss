@@ -7,6 +7,7 @@ header.information {
 	transition: .25s color linear, .5s opacity ease-in-out;
 	opacity: 0;
 	z-index: 1;
+	text-align: center;
 	p {
 		margin-bottom: .75rem;
 	}
