@@ -41,7 +41,7 @@
         padding: 0;
         border: none;
         cursor: pointer;
-        padding: 15px;
+        padding: 25px;
         @media (min-width: 1024px) {
             padding: 5px 5px 10px 5px;
         }
@@ -49,12 +49,8 @@
             outline: 1px solid transparent;
         }
         .circle {
-            height: 1rem;
-            width: 1rem;
-            @media (min-width: 1024px) {
-                height: .75rem;
-                width: .75rem;
-            }
+            height: .75rem;
+            width: .75rem;
             border-radius: 50%;
             background-color: black;
         }
