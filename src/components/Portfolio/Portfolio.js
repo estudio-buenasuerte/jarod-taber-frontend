@@ -67,8 +67,8 @@ const Layout = ({ children }) => {
   
 
   const [visible, setVisible] = useState(false)
-  const [projects] = useState(data.allSanityProject.nodes)
-  const [currentProject, setCurrentProject] = useState(data.allSanityProject.nodes[0])
+  const [projects] = useState(data.allSanityProject.nodes.sort((a, b) => a.title.split('_')[0] - b.title.split('_')[0]))
+  const [currentProject, setCurrentProject] = useState(data.allSanityProject.nodes.sort((a, b) => a.title.split('_')[0] - b.title.split('_')[0])[0])
   const [index, setIndex] = useState(0)
   
   
@@ -112,7 +112,7 @@ const Layout = ({ children }) => {
           setCurrentProject(projects[index + 1])
           setIndex(index + 1)
         }
-      }, 10000);
+      }, 15000);
       return () => clearInterval(interval)
     }
   }, [projects, index]);

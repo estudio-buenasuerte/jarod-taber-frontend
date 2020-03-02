@@ -9,12 +9,12 @@
 
 @mixin haas {
     font-family: "Unica77LLWeb-Medium", Helvetica, Arial, sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     line-height: 15px;
-    @media (min-width: 768px) {
-        font-size: 12px;
-        line-height: 16px;
-    }
+    // @media (min-width: 768px) {
+    //     font-size: 12px;
+    //     line-height: 16px;
+    // }
 }
 
 body {
