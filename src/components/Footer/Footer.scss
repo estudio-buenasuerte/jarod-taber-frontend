@@ -42,8 +42,10 @@
         border: none;
         cursor: pointer;
         padding: 25px;
+        position: relative;
+        margin-right: 5.5px;
         @media (min-width: 1024px) {
-            padding: 5px 5px 10px 5px;
+            padding: 5px 5px 20px 5px;
         }
         &:focus {
             outline: 1px solid transparent;

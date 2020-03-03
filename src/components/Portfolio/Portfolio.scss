@@ -86,14 +86,17 @@ button {
                 padding: 25px 0;
                 color: black;
                 transition: .25s color linear;
+                @include haas;
+
             }
             h1 {
-                margin-right: 2em;
+                margin-right: 1.25em;
                 padding-left: 25px;
                 -webkit-tap-highlight-color: rgba(0,0,0,0);
             }
             button {
                 padding-right: 25px;
+                margin-left: 1.25em;
                 cursor: pointer;
                 background-color: transparent;
                 @include haas;
