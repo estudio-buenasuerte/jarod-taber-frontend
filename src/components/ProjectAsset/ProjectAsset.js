@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Video from './Video'
-import Img from "gatsby-image"
-// import { Keyframes, Frame } from 'react-keyframes'
+import Img from 'gatsby-image'
 import './ProjectAsset.scss'
 
 const ProjectAsset = ({asset, onClick}) => {
@@ -30,7 +29,7 @@ const ProjectAsset = ({asset, onClick}) => {
                 backgroundImage: asset.isFullScreen ? `url(${asset.projectAsset.image[0].asset.url})` : null,
             }}>
                 {asset.projectAsset.image.map(img => {
-                    return <div key={img.asset.id} className={`img-asset${img === asset.projectAsset.image[0] ? ' mobile' : ''}${asset.isFullScreen ? ' fullscreen' : ''}`}><Img fixed={img.asset.fixed}  alt={asset.alt} /></div>
+                    return <div key={img.asset.id} className={`img-asset${img === asset.projectAsset.image[0] ? ' mobile' : ''}${asset.isFullScreen ? ' fullscreen' : ''}`}><Img fluid={img.asset.fluid}  alt={asset.alt} /></div>
                 })}
             </aside>
         )
