@@ -9,7 +9,7 @@ export default class Video extends React.Component {
 
     playVideoRef() {
         // Explicitly focus the text input using the raw DOM API
-        // Note: we're accessing "current" to get the DOM node
+        // Note: we're accessing 'current' to get the DOM node
         // This was required to get it to work for mobile iOS
         this.videoRef.current.autoplay = true
         this.videoRef.current.focus()
@@ -28,7 +28,7 @@ export default class Video extends React.Component {
             <video
                 ref={this.videoRef}
                 src={this.props.src}
-                type="video/mp4"
+                type='video/mp4'
                 autoPlay={true}
                 muted={true}
                 loop={true}

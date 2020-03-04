@@ -6,7 +6,7 @@ const serializers = {
         link: ({ mark, children }) => {
             const { blank, href } = mark
             return blank ?
-                <OutboundLink href={href} target="_blank" rel="noopener noreferrer">{children}</OutboundLink>
+                <OutboundLink href={href} target='_blank' rel='noopener noreferrer'>{children}</OutboundLink>
                 : <OutboundLink href={href}>{children}</OutboundLink>
         }
     }

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import PropTypes from "prop-types"
-import Header from "../Header/Header"
-import Footer from "../Footer/Footer"
-import Button from "../Button/Button"
+import { Swipeable } from 'react-swipeable'
+import PropTypes from 'prop-types'
+import Header from '../Header/Header'
+import Footer from '../Footer/Footer'
+import Button from '../Button/Button'
 import ProjectAsset from '../ProjectAsset/ProjectAsset'
 import SEO from '../seo'
 import 'reset-css'
@@ -120,11 +121,11 @@ const Layout = ({ children }) => {
 
   return (
     <main className={`portfolio${currentProject.isFullScreen ? ' fullscreen' : ''}`}>
-      <SEO title="JAROD TABER" />
+      <SEO title='JAROD TABER' />
       
       <Header visible={visible === true ? true : false}/>
       
-      <Button className='left' onClick={toggleLeft}></Button>
+      
       
       <aside className='title'>
           <span className='title-container'>
@@ -133,9 +134,13 @@ const Layout = ({ children }) => {
           </span>
         </aside>
       
-      <Button className='right' onClick={toggleRight}></Button>
-
-      <ProjectAsset asset={{ isFullScreen: currentProject.isFullScreen , projectAsset: currentProject.projectAsset, alt: currentProject.title }} />
+      
+      
+      <Swipeable onSwipedRight={toggleLeft} onSwipedLeft={toggleRight}>
+        <Button className='left' onClick={toggleLeft}></Button>
+        <ProjectAsset asset={{ isFullScreen: currentProject.isFullScreen , projectAsset: currentProject.projectAsset, alt: currentProject.title }} />
+        <Button className='right' onClick={toggleRight}></Button>
+      </Swipeable>
       
       <Footer isFullScreen={currentProject.isFullScreen} credits={currentProject.credits}/>
     </main>

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import BlockContent from '@sanity/block-content-to-react'
 import './Header.scss'
@@ -22,7 +22,7 @@ const Header = props => {
 		marks: {
 			link: ({ mark, children }) => {
 				const { href } = mark
-				return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>
+				return <a href={href} target='_blank' rel='noopener noreferrer'>{children}</a>
 			}
 		}
 	}
