@@ -1,10 +1,13 @@
 import React, { useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
+
 import './Footer.scss'
 
 
 const Footer = props => {
 
 	const [visible, setVisible] = useState(false)
+	const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' })
 	
 	return (
 		<footer className={`footer ${visible ? 'visible' : ''} ${props.isFullScreen ? 'fullscreen' : ''}`}>
@@ -19,12 +22,21 @@ const Footer = props => {
 					})}
 				</ul>
 			)}
-			<button className='hover' 
-			onClick={() => setVisible(!visible)}
-			onMouseEnter={() => setVisible(true)} 
-			onMouseLeave={() => setVisible(false)}>
-				<div className='circle'/>
-			</button>
+			{isTabletOrMobile
+			? (
+					<button className='hover mobile'
+						onClick={() => setVisible(!visible)}>
+						<div className='circle' />
+					</button>
+			) 
+			: (
+					<button className='hover'
+						onClick={() => setVisible(!visible)}
+						onMouseEnter={() => setVisible(true)}
+						onMouseLeave={() => setVisible(false)}>
+						<div className='circle' />
+					</button>
+			)}
 		</footer>
 	)
 		
