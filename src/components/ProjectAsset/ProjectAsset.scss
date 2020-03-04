@@ -29,14 +29,16 @@
             max-width: 90%;
         }
         &#wide-image {
-            .img-asset {
-                max-width: 50%;
+            @media (min-width: 1024px) {
+                .img-asset {
+                    max-width: 50%;
+                }
             }
         }
         &#two-image-flex {
             justify-content: space-between;
             @media (min-width:1024px) {
-                max-width: 100%;
+                max-width: calc(100% - 20px);
                 margin: 0 10px;
             }
         }
