@@ -13,7 +13,7 @@ const ProjectAsset = ({asset, onClick}) => {
                 setLoaded(true)
             }, 250);
             const fadeInterval = setTimeout(() => {
-                setLoaded(false)
+                // setLoaded(false)
             }, 14750);
 
             return () => {
@@ -25,7 +25,7 @@ const ProjectAsset = ({asset, onClick}) => {
 
     if (asset.projectAsset.image.length > 0) {
         projectAsset = (
-            <aside className='img-assets' style={{
+            <aside className='img-assets' id={asset.projectAsset.photoLayout} style={{
                 backgroundImage: asset.isFullScreen ? `url(${asset.projectAsset.image[0].asset.url})` : null,
             }}>
                 {asset.projectAsset.image.map(img => {

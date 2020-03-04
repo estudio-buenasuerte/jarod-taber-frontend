@@ -24,14 +24,25 @@
         width: 100%;
         max-width: 75%;
         margin: 0 auto;
-        // overflow: hidden;
         @media (min-width: 1024px) {
             flex-direction: row;
             max-width: 90%;
         }
+        &#wide-image {
+            .img-asset {
+                max-width: 50%;
+            }
+        }
+        &#two-image-flex {
+            justify-content: space-between;
+            @media (min-width:1024px) {
+                max-width: 100%;
+                margin: 0 10px;
+            }
+        }
         .img-asset {
             display: none;
-            margin-left: 50px;
+            margin-left: 2em;
             &:first-of-type {
                 margin-left: 0;
             }
