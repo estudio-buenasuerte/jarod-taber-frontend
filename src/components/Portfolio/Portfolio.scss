@@ -15,6 +15,13 @@
     //     font-size: 12px;
     //     line-height: 16px;
     // }
+    @media only screen 
+    and (min-device-width: 375px) 
+    and (max-device-width: 812px) 
+    and (-webkit-min-device-pixel-ratio: 3)
+    and (orientation: landscape) { 
+        font-size: 8px;
+    }
 }
 
 body, html {
