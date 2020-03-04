@@ -100,23 +100,23 @@ const Layout = ({ children }) => {
     },500)
   }
 
-  // useEffect(() => {
-  //   if (projects.length) {
+  useEffect(() => {
+    if (projects.length) {
       
-  //     const interval = setInterval(() => {
-  //       if (index === projects.length - 1) {
+      const interval = setInterval(() => {
+        if (index === projects.length - 1) {
           
-  //         setIndex(0)
-  //         setCurrentProject(projects[0])
-  //         return
-  //       } else {
-  //         setCurrentProject(projects[index + 1])
-  //         setIndex(index + 1)
-  //       }
-  //     }, 15000);
-  //     return () => clearInterval(interval)
-  //   }
-  // }, [projects, index]);
+          setIndex(0)
+          setCurrentProject(projects[0])
+          return
+        } else {
+          setCurrentProject(projects[index + 1])
+          setIndex(index + 1)
+        }
+      }, 15000);
+      return () => clearInterval(interval)
+    }
+  }, [projects, index]);
 
   return (
     <main className={`portfolio${currentProject.isFullScreen ? ' fullscreen' : ''}`}>
