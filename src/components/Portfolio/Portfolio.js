@@ -69,7 +69,7 @@ const Layout = ({ children }) => {
 
   const [visible, setVisible] = useState(false)
   const [projects] = useState(data.allSanityProject.nodes.sort((a, b) => a.title.split('_')[0] - b.title.split('_')[0]))
-  const [currentProject, setCurrentProject] = useState(data.allSanityProject.nodes.sort((a, b) => a.title.split('_')[0] - b.title.split('_')[0])[8])
+  const [currentProject, setCurrentProject] = useState(data.allSanityProject.nodes.sort((a, b) => a.title.split('_')[0] - b.title.split('_')[0])[0])
   const [index, setIndex] = useState(0)
   
   
