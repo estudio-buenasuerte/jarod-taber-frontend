@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import PropTypes from "prop-types"
 import Header from "../Header/Header"
 import Footer from "../Footer/Footer"
+import Button from "../Button/Button"
 import ProjectAsset from '../ProjectAsset/ProjectAsset'
 import SEO from '../seo'
 import 'reset-css'
@@ -123,7 +124,7 @@ const Layout = ({ children }) => {
       
       <Header visible={visible === true ? true : false}/>
       
-      <button className='left' onClick={toggleLeft}></button>
+      <Button className='left' onClick={toggleLeft}></Button>
       
       <aside className='title'>
           <span className='title-container'>
@@ -132,7 +133,7 @@ const Layout = ({ children }) => {
           </span>
         </aside>
       
-      <button className='right' onClick={toggleRight}></button>
+      <Button className='right' onClick={toggleRight}></Button>
 
       <ProjectAsset asset={{ isFullScreen: currentProject.isFullScreen , projectAsset: currentProject.projectAsset, alt: currentProject.title }} />
       

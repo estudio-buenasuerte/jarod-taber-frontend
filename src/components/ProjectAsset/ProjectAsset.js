@@ -12,10 +12,10 @@ const ProjectAsset = ({asset, onClick}) => {
     useEffect(() => {
             const loadInterval = setTimeout(() => {
                 setLoaded(true)
-            }, 500);
+            }, 250);
             const fadeInterval = setTimeout(() => {
                 setLoaded(false)
-            }, 14500);
+            }, 14750);
 
             return () => {
                 setLoaded(false)
@@ -30,7 +30,7 @@ const ProjectAsset = ({asset, onClick}) => {
                 backgroundImage: asset.isFullScreen ? `url(${asset.projectAsset.image[0].asset.url})` : null,
             }}>
                 {asset.projectAsset.image.map(img => {
-                    return <div key={img.asset.id} className={`img-asset${img === asset.projectAsset.image[0] ? ' mobile' : ''}${asset.isFullScreen ? ' fullscreen' : ''}`}><Img fluid={img.asset.fluid}  alt={asset.alt} /></div>
+                    return <div key={img.asset.id} className={`img-asset${img === asset.projectAsset.image[0] ? ' mobile' : ''}${asset.isFullScreen ? ' fullscreen' : ''}`}><Img fixed={img.asset.fixed}  alt={asset.alt} /></div>
                 })}
             </aside>
         )
