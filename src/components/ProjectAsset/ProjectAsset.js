@@ -1,28 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Video from "./Video";
-import Footer from "../Footer/Footer";
 import Img from "gatsby-image";
 import "./ProjectAsset.scss";
 
-const ProjectAsset = ({ asset, onClick }) => {
-  const [loaded, setLoaded] = useState(false);
-
+const ProjectAsset = ({ asset }) => {
   let projectAsset;
-
-  useEffect(() => {
-    const loadInterval = setTimeout(() => {
-      setLoaded(true);
-    }, 250);
-    const fadeInterval = setTimeout(() => {
-      setLoaded(false);
-    }, 14750);
-
-    return () => {
-      setLoaded(false);
-      clearTimeout(loadInterval);
-      clearTimeout(fadeInterval);
-    };
-  }, [asset.alt]);
 
   if (asset.projectAsset.image.length > 0) {
     projectAsset = (
@@ -54,7 +36,6 @@ const ProjectAsset = ({ asset, onClick }) => {
       <Video
         src={asset.projectAsset.video.asset.url}
         className={`video ${asset.isFullScreen ? "fullscreen" : ""}`}
-        onClick={onClick}
       />
     );
   }
@@ -63,12 +44,11 @@ const ProjectAsset = ({ asset, onClick }) => {
     <>
       <section
         className={`project-asset${asset.isFullScreen ? " fullscreen" : ""}${
-          loaded ? " visible" : ""
+          asset.isCurrent ? "  current" : ""
         }`}
       >
         {projectAsset}
       </section>
-      <Footer isFullScreen={asset.isFullScreen} credits={asset.credits} />
     </>
   );
 };

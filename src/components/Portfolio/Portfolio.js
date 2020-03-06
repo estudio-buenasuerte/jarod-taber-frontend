@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Swipeable } from "react-swipeable";
 import PropTypes from "prop-types";
 import Header from "../Header/Header";
-
+import Footer from "../Footer/Footer";
 import Button from "../Button/Button";
 import ProjectAsset from "../ProjectAsset/ProjectAsset";
 import SEO from "../seo";
@@ -142,16 +142,27 @@ const Layout = ({ children }) => {
 
       <Swipeable onSwipedRight={toggleLeft} onSwipedLeft={toggleRight}>
         <Button className="left" onClick={toggleLeft}></Button>
-        <ProjectAsset
-          asset={{
-            isFullScreen: currentProject.isFullScreen,
-            projectAsset: currentProject.projectAsset,
-            alt: currentProject.title,
-            credits: currentProject.credits
-          }}
-        />
+
+        {projects.map(project => {
+          return (
+            <ProjectAsset
+              asset={{
+                isFullScreen: project.isFullScreen,
+                projectAsset: project.projectAsset,
+                alt: project.title,
+                isCurrent: project === currentProject
+              }}
+              key={project.title}
+            />
+          );
+        })}
+
         <Button className="right" onClick={toggleRight}></Button>
       </Swipeable>
+      <Footer
+        isFullScreen={currentProject.isFullScreen}
+        credits={currentProject.credits}
+      />
     </main>
   );
 };
