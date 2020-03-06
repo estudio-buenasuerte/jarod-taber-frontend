@@ -5,7 +5,7 @@ header.information {
   left: 0;
   right: 0;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.5);
   z-index: 1;
   transition: 0.25s color linear, 0.25s opacity linear;
   opacity: 0;
@@ -16,7 +16,10 @@ header.information {
   }
   &.visible {
     opacity: 1;
-    z-index: 2;
+    z-index: 3;
+    p {
+      z-index: 5;
+    }
   }
   a {
     color: inherit;

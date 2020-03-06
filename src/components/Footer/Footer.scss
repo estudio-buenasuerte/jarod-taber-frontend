@@ -7,14 +7,6 @@
   text-align: center;
   z-index: 3;
 
-  &.fullscreen {
-    color: white;
-    .hover {
-      .circle {
-        background-color: white;
-      }
-    }
-  }
   .credits {
     opacity: 0;
     transition: 0.25s opacity ease;
@@ -55,6 +47,15 @@
       width: 0.75em;
       border-radius: 50%;
       background-color: black;
+      transition: 0.25s background-color linear;
+    }
+  }
+  &.fullscreen {
+    color: white;
+    .hover {
+      .circle {
+        background-color: white;
+      }
     }
   }
 }
