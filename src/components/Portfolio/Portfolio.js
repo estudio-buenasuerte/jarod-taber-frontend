@@ -107,6 +107,12 @@ const Layout = ({ children }) => {
     }, 500);
   };
 
+  const handleClickEvent = e => {
+    if (e.target.nodeName !== "P") {
+      setVisible(false);
+    }
+  };
+
   useEffect(() => {
     if (projects.length) {
       const interval = setInterval(() => {
@@ -130,7 +136,7 @@ const Layout = ({ children }) => {
     >
       <SEO title="JAROD TABER" />
 
-      <Header visible={visible} />
+      <Header visible={visible} onClick={handleClickEvent} />
 
       <aside className="title">
         <span className="title-container">

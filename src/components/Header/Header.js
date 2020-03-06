@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 import BlockContent from "@sanity/block-content-to-react";
 import "./Header.scss";
 
-const Header = ({ visible }) => {
+const Header = ({ visible, onClick }) => {
   // get the data
   const data = useStaticQuery(graphql`
     {
@@ -38,12 +38,6 @@ const Header = ({ visible }) => {
 
   const [headerVisible, setVisible] = useState(visible);
 
-  const handleClickEvent = e => {
-    if (e.target.nodeName !== "P") {
-      setVisible(false);
-    }
-  };
-
   useEffect(() => {
     setVisible(visible);
     return () => {
@@ -55,7 +49,7 @@ const Header = ({ visible }) => {
   return (
     <header
       className={`information ${headerVisible ? "visible" : ""}`}
-      onClick={handleClickEvent}
+      onClick={onClick}
     >
       <BlockContent blocks={aboutText} serializers={serializers} />
     </header>
