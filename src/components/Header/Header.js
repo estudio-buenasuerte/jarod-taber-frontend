@@ -36,7 +36,7 @@ const Header = ({ visible }) => {
     data.allSanitySiteSettings.edges[0].node._rawAboutBio
   );
 
-  const [headerVisible, setVisible] = useState(props.visible);
+  const [headerVisible, setVisible] = useState(visible);
 
   const handleClickEvent = e => {
     if (e.target.nodeName !== "P") {
