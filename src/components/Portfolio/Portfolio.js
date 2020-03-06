@@ -66,16 +66,19 @@ const Layout = ({ children }) => {
   `);
 
   const [visible, setVisible] = useState(false);
+
   const [projects] = useState(
     data.allSanityProject.nodes.sort(
       (a, b) => a.title.split("_")[0] - b.title.split("_")[0]
     )
   );
+
   const [currentProject, setCurrentProject] = useState(
     data.allSanityProject.nodes.sort(
       (a, b) => a.title.split("_")[0] - b.title.split("_")[0]
     )[0]
   );
+
   const [index, setIndex] = useState(0);
 
   const toggleLeft = () => {
@@ -127,7 +130,7 @@ const Layout = ({ children }) => {
     >
       <SEO title="JAROD TABER" />
 
-      <Header visible={visible === true ? true : false} />
+      <Header visible={visible} />
 
       <aside className="title">
         <span className="title-container">

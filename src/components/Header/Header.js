@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import BlockContent from "@sanity/block-content-to-react";
 import "./Header.scss";
 
-const Header = props => {
+const Header = ({ visible }) => {
   // get the data
   const data = useStaticQuery(graphql`
     {
@@ -36,9 +36,27 @@ const Header = props => {
     data.allSanitySiteSettings.edges[0].node._rawAboutBio
   );
 
+  const [headerVisible, setVisible] = useState(props.visible);
+
+  const handleClickEvent = e => {
+    if (e.target.nodeName !== "P") {
+      setVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    setVisible(visible);
+    return () => {
+      setVisible(false);
+    };
+  }, [visible]);
+
   // return component
   return (
-    <header className={`information ${props.visible ? "visible" : ""}`}>
+    <header
+      className={`information ${headerVisible ? "visible" : ""}`}
+      onClick={handleClickEvent}
+    >
       <BlockContent blocks={aboutText} serializers={serializers} />
     </header>
   );
