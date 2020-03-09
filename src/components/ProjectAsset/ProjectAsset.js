@@ -37,6 +37,7 @@ const ProjectAsset = ({ asset }) => {
         <Video
           src={asset.projectAsset.video.asset.url}
           className={`video ${asset.isFullScreen ? "fullscreen" : ""}`}
+          isCurrent={asset.isCurrent}
         />
       );
     }
