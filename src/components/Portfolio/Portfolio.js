@@ -13,70 +13,69 @@ import "./Portfolio.scss";
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     {
-      allSanityProject {
+      allSanitySiteSettings {
         nodes {
-          credits {
-            _key
-            _type
-            task
-            name
-          }
-          isFullScreen
-          title
-          projectAsset {
-            _key
-            _type
-            video {
+          projectOrder {
+            credits {
               _key
-              asset {
-                url
-                source {
+              name
+              _type
+              task
+            }
+            isFullScreen
+            title
+            projectAsset {
+              _key
+              _type
+              video {
+                _key
+                asset {
                   url
+                  childImageSharp {
+                    id
+                  }
                 }
               }
-            }
-            image {
-              asset {
-                url
-                id
-                fixed {
-                  aspectRatio
-                  width
-                  height
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                }
-                fluid {
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
+              image {
+                _key
+                _type
+                asset {
+                  fixed {
+                    base64
+                    aspectRatio
+                    width
+                    height
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                  }
+                  fluid {
+                    base64
+                    aspectRatio
+                    src
+                    srcSet
+                    srcWebp
+                    srcSetWebp
+                    sizes
+                  }
+                  url
+                  id
                 }
               }
+              photoLayout
             }
-            photoLayout
           }
         }
       }
     }
   `);
-
   const [visible, setVisible] = useState(false);
 
-  const [projects] = useState(
-    data.allSanityProject.nodes.sort(
-      (a, b) => a.title.split("_")[0] - b.title.split("_")[0]
-    )
-  );
+  const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
   const [currentProject, setCurrentProject] = useState(
-    data.allSanityProject.nodes.sort(
-      (a, b) => a.title.split("_")[0] - b.title.split("_")[0]
-    )[0]
+    data.allSanitySiteSettings.nodes[0].projectOrder[0]
   );
 
   const [index, setIndex] = useState(0);
@@ -113,21 +112,21 @@ const Layout = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (projects.length) {
-      const interval = setInterval(() => {
-        if (index === projects.length - 1) {
-          setIndex(0);
-          setCurrentProject(projects[0]);
-          return;
-        } else {
-          setCurrentProject(projects[index + 1]);
-          setIndex(index + 1);
-        }
-      }, 15000);
-      return () => clearInterval(interval);
-    }
-  }, [projects, index]);
+  // useEffect(() => {
+  //   if (projects.length) {
+  //     const interval = setInterval(() => {
+  //       if (index === projects.length - 1) {
+  //         setIndex(0);
+  //         setCurrentProject(projects[0]);
+  //         return;
+  //       } else {
+  //         setCurrentProject(projects[index + 1]);
+  //         setIndex(index + 1);
+  //       }
+  //     }, 15000);
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [projects, index]);
 
   return (
     <main
