@@ -43,14 +43,9 @@ button {
     z-index: 2;
     border: none;
     background-color: transparent;
-    width: 27.5%;
     cursor: url(../../images/arrow/cursor-black.svg), auto;
-    @media (min-width: 768px) {
-      width: 33%;
-    }
-    @media (min-width: 1024px) {
-      width: 42.5%;
-    }
+    width: 50%;
+    padding: 0;
     &:focus {
       outline: 1px solid transparent;
     }
@@ -70,7 +65,10 @@ button {
 
   .title {
     position: fixed;
-    top: 50%;
+    top: calc(50% - 31px);
+    @media (min-width: 1024px) {
+      top: 50%;
+    }
     text-align: center;
     left: 20%;
     right: 20%;
@@ -80,8 +78,8 @@ button {
       right: 35%;
     }
     @media (min-width: 1024px) {
-      left: 40%;
-      right: 40%;
+      left: 42%;
+      right: 42%;
     }
     z-index: 3;
     .title-container {
@@ -94,6 +92,9 @@ button {
         padding: 0;
         margin: 0;
         padding: 25px 0;
+        @media (min-width: 1024px) {
+          padding: 10px 0;
+        }
         color: black;
         transition: 0.25s color linear;
         cursor: url(../../images/arrow/cursor-black.svg), auto;
@@ -102,11 +103,17 @@ button {
       h1 {
         margin-right: 1.25em;
         padding-left: 25px;
+        @media (min-width: 1024px) {
+          padding-left: 0;
+        }
         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       }
       button {
-        padding-right: 25px;
         margin-left: 1.25em;
+        padding-right: 25px;
+        @media (min-width: 1024px) {
+          padding-right: 0;
+        }
         background-color: transparent;
         @include haas;
         font-size: 1em;
