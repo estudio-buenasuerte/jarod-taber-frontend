@@ -87,10 +87,8 @@ const Layout = ({ children }) => {
     }
     const element = document.querySelector(".project-asset");
     element.classList.remove("visible");
-    setTimeout(() => {
-      setIndex(newIndex);
-      setCurrentProject(projects[newIndex]);
-    }, 500);
+    setIndex(newIndex);
+    setCurrentProject(projects[newIndex]);
   };
 
   const toggleRight = () => {
@@ -100,10 +98,8 @@ const Layout = ({ children }) => {
     }
     const element = document.querySelector(".project-asset");
     element.classList.remove("visible");
-    setTimeout(() => {
-      setIndex(newIndex);
-      setCurrentProject(projects[newIndex]);
-    }, 500);
+    setIndex(newIndex);
+    setCurrentProject(projects[newIndex]);
   };
 
   const handleClickEvent = e => {
@@ -112,21 +108,21 @@ const Layout = ({ children }) => {
     }
   };
 
-  // useEffect(() => {
-  //   if (projects.length) {
-  //     const interval = setInterval(() => {
-  //       if (index === projects.length - 1) {
-  //         setIndex(0);
-  //         setCurrentProject(projects[0]);
-  //         return;
-  //       } else {
-  //         setCurrentProject(projects[index + 1]);
-  //         setIndex(index + 1);
-  //       }
-  //     }, 15000);
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [projects, index]);
+  useEffect(() => {
+    if (projects.length) {
+      const interval = setInterval(() => {
+        if (index === projects.length - 1) {
+          setIndex(0);
+          setCurrentProject(projects[0]);
+          return;
+        } else {
+          setCurrentProject(projects[index + 1]);
+          setIndex(index + 1);
+        }
+      }, 15000);
+      return () => clearInterval(interval);
+    }
+  }, [projects, index]);
 
   return (
     <main
