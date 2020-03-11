@@ -103,7 +103,7 @@ const Layout = ({ children }) => {
   };
 
   const handleClickEvent = e => {
-    if (e.target.nodeName !== "P") {
+    if (e.target.nodeName !== "P" && e.target.className !== "circle") {
       setVisible(false);
     }
   };
