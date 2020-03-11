@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import BlockContent from "@sanity/block-content-to-react";
+import Footer from "../Footer/Footer";
 import "./Header.scss";
 
 const Header = ({ visible, onClick }) => {
@@ -52,6 +53,12 @@ const Header = ({ visible, onClick }) => {
       onClick={onClick}
     >
       <BlockContent blocks={aboutText} serializers={serializers} />
+      <Footer
+        credits={[
+          { task: "Design", name: "ADAM RIDGEWAY" },
+          { task: "Development", name: "LUCAS VOCOS" }
+        ]}
+      />
     </header>
   );
 };
