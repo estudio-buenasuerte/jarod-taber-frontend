@@ -82,12 +82,20 @@
     }
   }
   // landscape mode
-  @media only screen and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+  // iphone X
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
     .img-assets {
       max-width: 33.3%;
     }
   }
-  @media only screen and (-webkit-device-pixel-ratio: 2) and (orientation: landscape) {
+  // iphone 6, 7, 8
+  @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: landscape) {
+    .img-assets {
+      max-width: 33.3%;
+    }
+  }
+  // iphone 6, 7, 8 plus
+  @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: landscape) {
     .img-assets {
       max-width: 33.3%;
     }
