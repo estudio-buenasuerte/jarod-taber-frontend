@@ -6,12 +6,20 @@
     url("../../font/Unica77LLSub-MediumSubset.woff") format("woff");
 }
 
+@font-face {
+  font-family: "PxGroteskTrial-Light";
+  src: url("../../font/PxGroteskTrial-Light.woff") format("woff");
+}
+
 @mixin haas {
-  font-family: "Unica77LLWeb-Medium", Helvetica, Arial, sans-serif;
-  font-size: 10px;
-  line-height: 15px;
+  font-family: "PxGroteskTrial-Light", "Unica77LLWeb-Medium", Helvetica, Arial,
+    sans-serif;
+  // font-size: 10px;
+  // line-height: 15px;
+  font-size: 11px;
+  line-height: 14px;
   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-    font-size: 10px;
+    font-size: 11px;
   }
 }
 
