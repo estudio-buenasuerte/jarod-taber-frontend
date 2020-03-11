@@ -145,7 +145,9 @@ const Layout = ({ children }) => {
       </aside>
 
       <Swipeable onSwipedRight={toggleLeft} onSwipedLeft={toggleRight}>
-        <Button className="left" onClick={toggleLeft}></Button>
+        <Button className="left" onClick={toggleLeft}>
+          <div className="circle" />
+        </Button>
 
         {projects.map(project => {
           return (
@@ -161,7 +163,9 @@ const Layout = ({ children }) => {
           );
         })}
 
-        <Button className="right" onClick={toggleRight}></Button>
+        <Button className="right" onClick={toggleRight}>
+          <div className="circle" />
+        </Button>
       </Swipeable>
       <Footer
         isFullScreen={currentProject.isFullScreen}
