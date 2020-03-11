@@ -160,8 +160,10 @@ button {
 
   &#information {
     .title {
+      cursor: url(../../images/arrow/cursor-black.svg), auto;
       h1,
       button {
+        cursor: url(../../images/arrow/cursor-black.svg), auto;
         color: black;
       }
     }
