@@ -205,4 +205,9 @@ button {
       }
     }
   }
+  &.information {
+    .hover {
+      padding-left: 30px;
+    }
+  }
 }

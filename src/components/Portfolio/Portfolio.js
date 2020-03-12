@@ -103,9 +103,15 @@ const Layout = ({ children }) => {
   };
 
   const handleClickEvent = e => {
-    if (e.target.nodeName !== "P" && e.target.className !== "circle") {
-      setVisible(false);
-    }
+    if (
+      e.target.nodeName === "P" ||
+      e.target.nodeName === "A" ||
+      e.target.nodeName === "SPAN" ||
+      e.target.className === "hover"
+    )
+      return;
+
+    setVisible(false);
   };
 
   useEffect(() => {

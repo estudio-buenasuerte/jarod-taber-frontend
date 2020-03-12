@@ -11,7 +11,7 @@ const Footer = props => {
     <footer
       className={`footer ${visible ? "visible" : ""} ${
         props.isFullScreen ? "fullscreen" : ""
-      }`}
+      } ${props.infoCredits ? "information" : ""}`}
     >
       {props.credits && (
         <ul className={`credits${visible ? " visible" : ""}`}>
@@ -56,7 +56,7 @@ const Footer = props => {
           className="hover"
           onClick={() => setVisible(!visible)}
           onMouseEnter={() => setVisible(true)}
-          // onMouseLeave={() => setVisible(false)}
+          onMouseLeave={() => setVisible(false)}
         >
           <div className="circle" />
         </button>
