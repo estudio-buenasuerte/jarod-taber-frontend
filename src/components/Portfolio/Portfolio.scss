@@ -197,6 +197,12 @@ button {
       .circle {
         background-color: black;
       }
+      .credits {
+        display: none;
+      }
+      .information {
+        display: flex;
+      }
     }
   }
 }

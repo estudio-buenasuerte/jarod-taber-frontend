@@ -25,6 +25,28 @@ const Footer = props => {
           })}
         </ul>
       )}
+
+      {props.infoCredits && (
+        <ul className={`credits visible information`}>
+          {props.infoCredits.map(credit => {
+            return (
+              <li key={credit._key}>
+                <span className="task">{credit.task}</span>{" "}
+                <span className="name">
+                  <a
+                    href={credit.site}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    {credit.name}
+                  </a>
+                </span>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+
       {isTabletOrMobile ? (
         <button className="hover mobile" onClick={() => setVisible(!visible)}>
           <div className="circle" />
@@ -34,7 +56,7 @@ const Footer = props => {
           className="hover"
           onClick={() => setVisible(!visible)}
           onMouseEnter={() => setVisible(true)}
-          onMouseLeave={() => setVisible(false)}
+          // onMouseLeave={() => setVisible(false)}
         >
           <div className="circle" />
         </button>

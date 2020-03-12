@@ -54,9 +54,17 @@ const Header = ({ visible, onClick }) => {
     >
       <BlockContent blocks={aboutText} serializers={serializers} />
       <Footer
-        credits={[
-          { task: "Design", name: "ADAM RIDGEWAY" },
-          { task: "Development", name: "LUCAS VOCOS" }
+        infoCredits={[
+          {
+            task: "Design",
+            name: "ADAM RIDGEWAY",
+            site: "http://adamridgeway.com/"
+          },
+          {
+            task: "Development",
+            name: "LUCAS VOCOS",
+            site: "https://www.lucasvocos.com"
+          }
         ]}
       />
     </header>
