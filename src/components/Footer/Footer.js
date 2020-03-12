@@ -27,7 +27,7 @@ const Footer = props => {
       )}
 
       {props.infoCredits && (
-        <ul className={`credits visible information`}>
+        <ul className={`credits ${visible ? " visible" : ""} information`}>
           {props.infoCredits.map(credit => {
             return (
               <li key={credit._key}>
@@ -56,7 +56,7 @@ const Footer = props => {
           className="hover"
           onClick={() => setVisible(!visible)}
           onMouseEnter={() => setVisible(true)}
-          onMouseLeave={() => setVisible(false)}
+          onMouseLeave={() => (props.infoCredits ? null : setVisible(false))}
         >
           <div className="circle" />
         </button>

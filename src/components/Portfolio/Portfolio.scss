@@ -199,6 +199,9 @@ button {
       }
       .credits {
         display: none;
+        a {
+          cursor: url(../../images/arrow/cursor-white.svg), auto;
+        }
       }
       .information {
         display: flex;

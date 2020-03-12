@@ -51,6 +51,7 @@ const Header = ({ visible, onClick }) => {
     <header
       className={`information ${headerVisible ? "visible" : ""}`}
       onClick={onClick}
+      role="banner"
     >
       <BlockContent blocks={aboutText} serializers={serializers} />
       <Footer
