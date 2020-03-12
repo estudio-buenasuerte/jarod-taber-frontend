@@ -107,7 +107,8 @@ const Layout = ({ children }) => {
       e.target.nodeName === "P" ||
       e.target.nodeName === "A" ||
       e.target.nodeName === "SPAN" ||
-      e.target.className === "hover"
+      e.target.nodeName === "DIV" ||
+      e.target.nodeName === "BUTTON"
     )
       return;
 
