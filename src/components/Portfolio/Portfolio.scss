@@ -89,7 +89,7 @@ button {
     position: fixed;
     top: calc(50% - 31px);
     @media (min-width: 1024px) {
-      top: 50%;
+      top: calc(50% - 15px);
     }
     text-align: center;
     left: 20%;
