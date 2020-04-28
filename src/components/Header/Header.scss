@@ -12,9 +12,7 @@ header.information {
   z-index: 1;
   text-align: center;
   cursor: url(../../images/arrow/cursor-black.svg), auto;
-  // p {
-  //   margin-bottom: 0.25rem;
-  // }
+
   &.visible {
     opacity: 1;
     z-index: 3;
