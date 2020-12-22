@@ -1,7 +1,9 @@
 import React from 'react';
-import Portfolio from '../components/Portfolio/Portfolio';
+import Portfolio from '../components/Portfolio';
 import SEO from '../components/seo';
 import { useStaticQuery, graphql } from 'gatsby';
+
+import '../styles/main.scss';
 
 const IndexPage = () => {
 	const data = useStaticQuery(graphql`

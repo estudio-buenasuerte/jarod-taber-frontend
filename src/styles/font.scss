@@ -1,0 +1,25 @@
+@font-face {
+	font-family: 'Unica77LLWeb-Medium';
+	src: url('../font/Unica77LLWeb-Medium.woff2') format('woff2'),
+		url('../font/Unica77LLWeb-Medium.woff') format('woff'),
+		url('../font/Unica77LLSub-MediumSubset.woff2') format('woff2'),
+		url('../font/Unica77LLSub-MediumSubset.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'PxGrotesk-Light';
+	src: url('../font/PxGrotesk-Light.eot');
+	src: url('../font/PxGrotesk-Light.eot?#iefix') format('embedded-opentype'),
+		url('../font/PxGrotesk-Light.woff') format('woff'),
+		url('../font/PxGrotesk-Light.ttf') format('truetype'),
+		url('../font/PxGrotesk-Light.svg#PxGrotesk-Light') format('svg');
+}
+
+@mixin font {
+	font-family: 'PxGrotesk-Light', 'Unica77LLWeb-Medium', Helvetica, Arial, sans-serif;
+	font-size: 11px;
+	line-height: 14px;
+	@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+		font-size: 11px;
+	}
+}
