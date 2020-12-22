@@ -175,13 +175,13 @@ const Portfolio = props => {
 						}}>
 						Information
 					</button>
-					<button
+					{/* <button
 						className='index'
 						onClick={() => {
 							setArchiveOpen(!isArchiveOpen);
 						}}>
 						Archive
-					</button>
+					</button> */}
 				</span>
 			</aside>
 
