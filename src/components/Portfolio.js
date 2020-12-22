@@ -8,12 +8,13 @@ import Button from './Button';
 import ProjectAsset from './ProjectAsset';
 import SEO from './seo';
 
-const Layout = ({ children }) => {
+const Portfolio = props => {
 	const data = useStaticQuery(graphql`
 		{
 			allSanitySiteSettings {
 				nodes {
 					projectOrder {
+						_key
 						credits {
 							_key
 							name
@@ -22,6 +23,22 @@ const Layout = ({ children }) => {
 						}
 						isFullScreen
 						title
+						thumbnail {
+							_key
+							_type
+							asset {
+								url
+								fluid {
+									base64
+									aspectRatio
+									src
+									srcSet
+									srcWebp
+									srcSetWebp
+									sizes
+								}
+							}
+						}
 						projectAsset {
 							_key
 							_type
@@ -69,6 +86,7 @@ const Layout = ({ children }) => {
 		}
 	`);
 	const [isInfoVisible, setInfoVisible] = useState(false);
+	const [isArchiveOpen, setArchiveOpen] = useState(false);
 
 	const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
@@ -77,6 +95,10 @@ const Layout = ({ children }) => {
 	);
 
 	const [index, setIndex] = useState(0);
+
+	const clickArchive = item => {
+		debugger;
+	};
 
 	const toggleLeft = () => {
 		let newIndex = index - 1;
@@ -142,9 +164,6 @@ const Layout = ({ children }) => {
 					<button
 						className='jarod'
 						onClick={() => {
-							navigate('/', {
-								replace: true,
-							});
 							setInfoVisible(false);
 						}}>
 						Jarod Taber
@@ -152,16 +171,17 @@ const Layout = ({ children }) => {
 					<button
 						className='information'
 						onClick={() => {
-							// navigate('/#information', {
-							// 	replace: true,
-							// });
 							setInfoVisible(!isInfoVisible);
 						}}>
 						Information
 					</button>
-					<Link to='/archive' className='index'>
+					<button
+						className='index'
+						onClick={() => {
+							setArchiveOpen(!isArchiveOpen);
+						}}>
 						Archive
-					</Link>
+					</button>
 				</span>
 			</aside>
 
@@ -193,8 +213,8 @@ const Layout = ({ children }) => {
 	);
 };
 
-Layout.propTypes = {
+Portfolio.propTypes = {
 	children: PropTypes.node.isRequired,
 };
 
-export default Layout;
+export default Portfolio;
