@@ -1,5 +1,6 @@
 import React from 'react';
 import Portfolio from '../components/Portfolio';
+import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { useStaticQuery, graphql } from 'gatsby';
 
@@ -20,9 +21,10 @@ const IndexPage = () => {
 	const { title, description } = data.allSanitySiteSettings.nodes[0];
 
 	return (
-		<Portfolio>
+		<Layout>
 			<SEO title={title} description={description} />
-		</Portfolio>
+			<Portfolio />
+		</Layout>
 	);
 };
 
