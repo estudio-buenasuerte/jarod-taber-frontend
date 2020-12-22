@@ -29,6 +29,7 @@ export default ({ children }) => {
 		<SwitchTransition>
 			<Transition
 				key={location.pathname}
+				in={true}
 				mountOnEnter
 				unmountOnExit
 				appear

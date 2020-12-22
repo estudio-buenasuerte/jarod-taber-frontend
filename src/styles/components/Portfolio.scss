@@ -62,52 +62,42 @@ button {
 
 	.title {
 		position: fixed;
-		top: calc(50% - 31px);
-		@media (min-width: 1024px) {
-			top: calc(50% - 15px);
-		}
+		top: calc(50%);
+		left: 50%;
+		transform: translate(-50%, -50%);
 		text-align: center;
-		left: 20%;
-		right: 20%;
 		display: flex;
-		@media (min-width: 768px) {
-			left: 35%;
-			right: 35%;
-		}
-		@media (min-width: 1024px) {
-			left: 42%;
-			right: 42%;
-		}
+
 		z-index: 3;
 		.title-container {
 			margin: 0 auto;
 			display: flex;
 
 			h1,
-			button {
+			button,
+			a {
 				text-transform: uppercase;
+				text-decoration: none;
 				padding: 0;
 				margin: 0;
 				padding: 25px 0;
+				margin-right: 1.25em;
 				@media (min-width: 1024px) {
 					padding: 10px 0;
 				}
 				color: black;
-				transition: 0.25s color linear;
+				transition: 0.25s color ease;
 				cursor: url(../images/arrow/cursor-black.svg), auto;
 				@include font;
 			}
-			h1 {
-				margin-right: 1.25em;
-				padding-left: 25px;
+			a {
+				display: flex;
 				@media (min-width: 1024px) {
 					padding-left: 0;
 				}
 				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 			}
 			button {
-				margin-left: 1.25em;
-				padding-right: 25px;
 				@media (min-width: 1024px) {
 					padding-right: 0;
 				}
@@ -139,7 +129,8 @@ button {
 		cursor: url(../images/arrow/cursor-white.svg), auto;
 		.title {
 			h1,
-			button {
+			button,
+			a {
 				color: white;
 				cursor: url(../images/arrow/cursor-white.svg), auto;
 			}
@@ -162,7 +153,8 @@ button {
 		.title {
 			cursor: url(../images/arrow/cursor-black.svg), auto;
 			h1,
-			button {
+			button,
+			a {
 				cursor: url(../images/arrow/cursor-black.svg), auto;
 				color: black;
 			}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { useStaticQuery, graphql, navigate, Link } from 'gatsby';
 import { Swipeable } from 'react-swipeable';
 import PropTypes from 'prop-types';
 import Header from './Header';
@@ -139,7 +139,7 @@ const Layout = ({ children }) => {
 
 			<aside className='title'>
 				<span className='title-container'>
-					<h1
+					<button
 						className='jarod'
 						onClick={() => {
 							navigate('/', {
@@ -148,7 +148,7 @@ const Layout = ({ children }) => {
 							setInfoVisible(false);
 						}}>
 						Jarod Taber
-					</h1>
+					</button>
 					<button
 						className='information'
 						onClick={() => {
@@ -159,6 +159,9 @@ const Layout = ({ children }) => {
 						}}>
 						Information
 					</button>
+					<Link to='/archive' className='index'>
+						Archive
+					</Link>
 				</span>
 			</aside>
 

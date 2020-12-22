@@ -1,5 +1,4 @@
 import React from 'react';
-import Portfolio from '../components/Portfolio';
 import Layout from '../components/Layout';
 import SEO from '../components/seo';
 import { useStaticQuery, graphql } from 'gatsby';
@@ -9,19 +8,36 @@ const IndexPage = () => {
 		{
 			allSanitySiteSettings {
 				nodes {
-					title
-					description
+					projectOrder {
+						_key
+						title
+						thumbnail {
+							_key
+							_type
+							asset {
+								url
+								fluid {
+									base64
+									aspectRatio
+									src
+									srcSet
+									srcWebp
+									srcSetWebp
+									sizes
+								}
+							}
+						}
+					}
 				}
 			}
 		}
 	`);
 
-	const { title, description } = data.allSanitySiteSettings.nodes[0];
+	debugger;
 
 	return (
 		<Layout>
-			<SEO title={title} description={description} />
-			<Portfolio />
+			<SEO title={'Index'} />
 		</Layout>
 	);
 };
