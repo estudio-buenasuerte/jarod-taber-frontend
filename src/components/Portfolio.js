@@ -100,10 +100,6 @@ const Portfolio = () => {
 
 	const [index, setIndex] = useState(0);
 
-	const clickArchive = item => {
-		debugger;
-	};
-
 	const toggleLeft = () => {
 		let newIndex = index - 1;
 		if (newIndex < 0) {
@@ -143,6 +139,23 @@ const Portfolio = () => {
 	};
 
 	useEffect(() => {
+		const { search } = location;
+
+		switch (search) {
+			case '?information':
+				setInfoVisible(true);
+				setArchiveOpen(false);
+				break;
+			case '?archive':
+				setInfoVisible(false);
+				setArchiveOpen(true);
+				break;
+			default:
+				setInfoVisible(false);
+				setArchiveOpen(false);
+				break;
+		}
+
 		if (projects.length) {
 			const interval = setInterval(() => {
 				if (index === projects.length - 1) {
@@ -156,7 +169,7 @@ const Portfolio = () => {
 			}, 15000);
 			return () => clearInterval(interval);
 		}
-	}, [projects, index]);
+	}, [projects, index, location]);
 
 	return (
 		<main
