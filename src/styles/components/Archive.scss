@@ -44,6 +44,29 @@
 
 .archive__nav {
 	button {
-		padding-right: 25px;
+		margin-right: 25px;
+	}
+}
+
+.archive__list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding-top: 20px;
+
+	@media (min-width: 1200px) {
+		padding-top: 50px;
+	}
+}
+
+.archive__project {
+	width: 33.3%;
+
+	@media (min-width: 800px) {
+		width: 25%;
+	}
+
+	@media (min-width: 1200px) {
+		max-width: 300px;
 	}
 }

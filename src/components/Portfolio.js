@@ -172,6 +172,7 @@ const Portfolio = () => {
 				isArchiveOpen={isArchiveOpen}
 				projects={projects}
 				setCurrentProject={setCurrentProject}
+				setIndex={setIndex}
 			/>
 
 			<aside className='title'>
