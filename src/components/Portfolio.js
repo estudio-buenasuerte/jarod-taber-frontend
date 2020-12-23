@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useStaticQuery, graphql, navigate, Link } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { useLocation } from '@reach/router';
 import { Swipeable } from 'react-swipeable';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
 import Button from './Button';
 import ProjectAsset from './ProjectAsset';
+import Archive from './Archive';
 import SEO from './seo';
 
-const Portfolio = props => {
+const Portfolio = () => {
+	const location = useLocation();
 	const data = useStaticQuery(graphql`
 		{
 			allSanitySiteSettings {
@@ -122,7 +126,7 @@ const Portfolio = props => {
 		setCurrentProject(projects[newIndex]);
 	};
 
-	const handleClickEvent = e => {
+	const clickOutsideInformation = e => {
 		if (
 			e.target.nodeName === 'P' ||
 			e.target.nodeName === 'A' ||
@@ -132,6 +136,9 @@ const Portfolio = props => {
 		)
 			return;
 
+		navigate('/', {
+			replace: true,
+		});
 		setInfoVisible(false);
 	};
 
@@ -153,17 +160,28 @@ const Portfolio = props => {
 
 	return (
 		<main
-			className={`portfolio${currentProject.isFullScreen ? ' fullscreen' : ''}`}
+			className={classNames('portfolio', {
+				fullscreen: currentProject.isFullScreen,
+			})}
 			id={isInfoVisible ? 'information' : ''}>
 			<SEO title='JAROD TABER' />
 
-			<Header visible={isInfoVisible} onClick={handleClickEvent} />
+			<Header visible={isInfoVisible} onClick={clickOutsideInformation} />
+			<Archive
+				setArchiveOpen={setArchiveOpen}
+				isArchiveOpen={isArchiveOpen}
+				projects={projects}
+				setCurrentProject={setCurrentProject}
+			/>
 
 			<aside className='title'>
 				<span className='title-container'>
 					<button
 						className='jarod'
 						onClick={() => {
+							navigate('/', {
+								replace: true,
+							});
 							setInfoVisible(false);
 						}}>
 						Jarod Taber
@@ -171,13 +189,19 @@ const Portfolio = props => {
 					<button
 						className='information'
 						onClick={() => {
-							setInfoVisible(!isInfoVisible);
+							navigate('/?information', {
+								replace: true,
+							});
+							setInfoVisible(true);
 						}}>
 						Information
 					</button>
 					<button
 						className='index'
 						onClick={() => {
+							navigate(isArchiveOpen ? '/' : '/?archive', {
+								replace: true,
+							});
 							setArchiveOpen(!isArchiveOpen);
 						}}>
 						Archive
