@@ -89,10 +89,9 @@ const Portfolio = () => {
 		}
 	`);
 	const location = useLocation();
-	const { search } = location;
 
-	const [isInfoVisible, setInfoVisible] = useState(search.includes('?information'));
-	const [isArchiveOpen, setArchiveOpen] = useState(search.includes('?archive'));
+	const [isInfoVisible, setInfoVisible] = useState(location.search.includes('?information'));
+	const [isArchiveOpen, setArchiveOpen] = useState(location.search.includes('?archive'));
 
 	const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
