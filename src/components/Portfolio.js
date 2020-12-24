@@ -12,7 +12,6 @@ import Archive from './Archive';
 import SEO from './seo';
 
 const Portfolio = () => {
-	const location = useLocation();
 	const data = useStaticQuery(graphql`
 		{
 			allSanitySiteSettings {
@@ -89,8 +88,11 @@ const Portfolio = () => {
 			}
 		}
 	`);
-	const [isInfoVisible, setInfoVisible] = useState(false);
-	const [isArchiveOpen, setArchiveOpen] = useState(false);
+	const location = useLocation();
+	const { search } = location;
+
+	const [isInfoVisible, setInfoVisible] = useState(search === '?information');
+	const [isArchiveOpen, setArchiveOpen] = useState(search === '?archive');
 
 	const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
@@ -139,23 +141,6 @@ const Portfolio = () => {
 	};
 
 	useEffect(() => {
-		const { search } = location;
-
-		switch (search) {
-			case '?information':
-				setInfoVisible(true);
-				setArchiveOpen(false);
-				break;
-			case '?archive':
-				setInfoVisible(false);
-				setArchiveOpen(true);
-				break;
-			default:
-				setInfoVisible(false);
-				setArchiveOpen(false);
-				break;
-		}
-
 		if (projects.length) {
 			const interval = setInterval(() => {
 				if (index === projects.length - 1) {
@@ -206,6 +191,7 @@ const Portfolio = () => {
 							navigate('/?information', {
 								replace: true,
 							});
+							setArchiveOpen(false);
 							setInfoVisible(true);
 						}}>
 						Information
@@ -213,10 +199,11 @@ const Portfolio = () => {
 					<button
 						className='index'
 						onClick={() => {
-							navigate(isArchiveOpen ? '/' : '/?archive', {
+							navigate('/?archive', {
 								replace: true,
 							});
-							setArchiveOpen(!isArchiveOpen);
+							setInfoVisible(false);
+							setArchiveOpen(true);
 						}}>
 						Archive
 					</button>
