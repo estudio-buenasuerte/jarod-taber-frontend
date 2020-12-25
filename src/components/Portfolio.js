@@ -89,9 +89,10 @@ const Portfolio = () => {
 		}
 	`);
 	const location = useLocation();
+	const { search } = location;
 
-	const [isInfoVisible, setInfoVisible] = useState(location.search.includes('?information'));
-	const [isArchiveOpen, setArchiveOpen] = useState(location.search.includes('?archive'));
+	const [isInfoVisible, setInfoVisible] = useState(search === '?information');
+	const [isArchiveOpen, setArchiveOpen] = useState(search === '?archive');
 
 	const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
@@ -140,23 +141,22 @@ const Portfolio = () => {
 	};
 
 	useEffect(() => {
-		const { search } = location;
-		console.log({ search });
+		console.log('search', search);
 
-		switch (search) {
-			case '?information':
-				setInfoVisible(true);
-				setArchiveOpen(false);
-				break;
-			case '?archive':
-				setInfoVisible(false);
-				setArchiveOpen(true);
-				break;
-			default:
-				setInfoVisible(false);
-				setArchiveOpen(false);
-				break;
-		}
+		// switch (search) {
+		// 	case '?information':
+		// 		setInfoVisible(true);
+		// 		setArchiveOpen(false);
+		// 		break;
+		// 	case '?archive':
+		// 		setInfoVisible(false);
+		// 		setArchiveOpen(true);
+		// 		break;
+		// 	default:
+		// 		setInfoVisible(false);
+		// 		setArchiveOpen(false);
+		// 		break;
+		// }
 
 		if (projects.length) {
 			const interval = setInterval(() => {
@@ -171,7 +171,7 @@ const Portfolio = () => {
 			}, 15000);
 			return () => clearInterval(interval);
 		}
-	}, [projects, index, location]);
+	}, [projects, index, search]);
 
 	return (
 		<main
