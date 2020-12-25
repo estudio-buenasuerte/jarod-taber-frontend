@@ -142,6 +142,7 @@ const Portfolio = () => {
 
 	useEffect(() => {
 		console.log('search', search);
+		console.log('isInfoVisible', isInfoVisible);
 
 		// switch (search) {
 		// 	case '?information':
