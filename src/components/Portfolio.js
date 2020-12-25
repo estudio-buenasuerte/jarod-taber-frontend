@@ -143,12 +143,10 @@ const Portfolio = () => {
 	useEffect(() => {
 		switch (search) {
 			case '?information':
-				console.log('search', search);
 				setInfoVisible(true);
 				setArchiveOpen(false);
 				break;
 			case '?archive':
-				console.log('search', search);
 				setInfoVisible(false);
 				setArchiveOpen(true);
 				break;
