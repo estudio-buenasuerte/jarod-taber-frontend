@@ -141,6 +141,7 @@ const Portfolio = () => {
 
 	useEffect(() => {
 		const { search } = location;
+		console.log({ search });
 
 		switch (search) {
 			case '?information':
