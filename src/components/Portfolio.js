@@ -91,8 +91,8 @@ const Portfolio = () => {
 	const location = useLocation();
 	const { search } = location;
 
-	const [isInfoVisible, setInfoVisible] = useState(search === '?information');
-	const [isArchiveOpen, setArchiveOpen] = useState(search === '?archive');
+	const [isInfoVisible, setInfoVisible] = useState(false);
+	const [isArchiveOpen, setArchiveOpen] = useState(false);
 
 	const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
@@ -141,23 +141,22 @@ const Portfolio = () => {
 	};
 
 	useEffect(() => {
-		console.log('search', search);
-		console.log('isInfoVisible', isInfoVisible);
-
-		// switch (search) {
-		// 	case '?information':
-		// 		setInfoVisible(true);
-		// 		setArchiveOpen(false);
-		// 		break;
-		// 	case '?archive':
-		// 		setInfoVisible(false);
-		// 		setArchiveOpen(true);
-		// 		break;
-		// 	default:
-		// 		setInfoVisible(false);
-		// 		setArchiveOpen(false);
-		// 		break;
-		// }
+		switch (search) {
+			case '?information':
+				console.log('search', search);
+				setInfoVisible(true);
+				setArchiveOpen(false);
+				break;
+			case '?archive':
+				console.log('search', search);
+				setInfoVisible(false);
+				setArchiveOpen(true);
+				break;
+			default:
+				setInfoVisible(false);
+				setArchiveOpen(false);
+				break;
+		}
 
 		if (projects.length) {
 			const interval = setInterval(() => {
