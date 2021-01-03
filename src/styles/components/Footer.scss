@@ -1,69 +1,71 @@
 .footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  color: inherit;
-  text-align: center;
-  z-index: 2;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: inherit;
+	text-align: center;
+	z-index: 2;
 
-  .credits {
-    opacity: 0;
-    transition: 0.25s opacity ease;
-    display: flex;
-    flex-direction: column;
-    @media (min-width: 768px) {
-      flex-direction: row;
-      li {
-        margin-right: 1em;
-      }
-      padding-bottom: 1em;
-    }
-    justify-content: center;
-    &.visible {
-      opacity: 1;
-    }
-    .name {
-      text-transform: uppercase;
-    }
-  }
-  .hover {
-    -webkit-appearance: none;
-    background-color: transparent;
-    margin: 0 auto;
-    padding: 0;
-    border: none;
-    padding: 25px;
-    position: relative;
-    margin-right: 5.5px;
-    @media (min-width: 1024px) {
-      padding: 5px 5px 20px 5px;
-    }
-    &:focus {
-      outline: 1px solid transparent;
-    }
-    .circle {
-      height: 0.75em;
-      width: 0.75em;
-      border-radius: 50%;
-      background-color: black;
-      transition: 0.25s background-color linear;
-    }
-  }
-  &.fullscreen {
-    color: white;
-    .hover {
-      .circle {
-        background-color: white;
-      }
-    }
-  }
-  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
-    .hover {
-      padding: 10px;
-    }
-    ul.credits {
-      padding-bottom: 0;
-    }
-  }
+	.credits {
+		opacity: 0;
+		transition: 0.25s opacity ease;
+		display: flex;
+		flex-direction: column;
+		list-style: none;
+		justify-content: center;
+
+		@media (min-width: 768px) {
+			flex-direction: row;
+			li {
+				margin-right: 1em;
+			}
+			padding-bottom: 1em;
+		}
+		&.visible {
+			opacity: 1;
+		}
+		.name {
+			text-transform: uppercase;
+		}
+	}
+	.hover {
+		-webkit-appearance: none;
+		background-color: transparent;
+		margin: 0 auto;
+		padding: 0;
+		border: none;
+		padding: 25px;
+		position: relative;
+		margin-right: 5.5px;
+		@media (min-width: 1024px) {
+			padding: 5px 5px 20px 5px;
+		}
+		&:focus {
+			outline: 1px solid transparent;
+		}
+		.circle {
+			height: 0.75em;
+			width: 0.75em;
+			border-radius: 50%;
+			background-color: black;
+			transition: 0.25s background-color linear;
+		}
+	}
+	&.fullscreen {
+		color: white;
+		.hover {
+			.circle {
+				background-color: white;
+			}
+		}
+	}
+	@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+		.hover {
+			padding: 10px;
+		}
+		ul.credits {
+			padding-bottom: 0;
+		}
+	}
 }
