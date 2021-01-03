@@ -26,19 +26,15 @@ const Portfolio = () => {
 						}
 						isFullScreen
 						title
-						thumbnail {
-							_key
-							_type
-							asset {
-								url
-								fluid {
-									base64
-									aspectRatio
-									src
-									srcSet
-									srcWebp
-									srcSetWebp
-									sizes
+						projectThumbnail {
+							image {
+								asset {
+									url
+								}
+							}
+							video {
+								asset {
+									url
 								}
 							}
 						}

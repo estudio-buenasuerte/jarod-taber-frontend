@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { navigate } from 'gatsby';
+import Video from './Video';
 
 const IndexList = ({ isIndexOpen, setIndexOpen, setCurrentProject, setIndex, projects }) => {
 	const [selectedTitle, setSelectedTitle] = useState(null);
@@ -42,9 +43,10 @@ const IndexList = ({ isIndexOpen, setIndexOpen, setCurrentProject, setIndex, pro
 			</header>
 			<section className='archive__list'>
 				{projects.map((item, index) => {
+					debugger;
 					return (
 						<article key={`project ${index}`} className='archive__project'>
-							{item.thumbnail && (
+							{item.projectThumbnail.image && (
 								<img
 									onClick={() => {
 										setCurrentProject(projects[index]);
@@ -59,10 +61,33 @@ const IndexList = ({ isIndexOpen, setIndexOpen, setCurrentProject, setIndex, pro
 									onMouseEnter={() => {
 										setSelectedTitle(item?.credits[0]?.name);
 									}}
-									src={`${item.thumbnail.asset.url}?w=600`}
+									src={`${item.projectThumbnail.image.asset.url}?w=600`}
 									alt={item.title}
 									className='archive__project--img'
 								/>
+							)}
+							{item.projectThumbnail.video && (
+								<div
+									className='archive__project--video'
+									onClick={() => {
+										setCurrentProject(projects[index]);
+										setIndex(index);
+										setTimeout(() => {
+											setIndexOpen(false);
+											navigate('/', {
+												replace: true,
+											});
+										}, 250);
+									}}
+									onMouseEnter={() => {
+										setSelectedTitle(item?.credits[0]?.name);
+									}}>
+									<Video
+										src={item.projectThumbnail.video.asset.url}
+										className='archive__project--img'
+										isCurrent={true}
+									/>
+								</div>
 							)}
 						</article>
 					);
