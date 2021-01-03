@@ -92,7 +92,7 @@ const Portfolio = () => {
 	const { search } = location;
 
 	const [isInfoVisible, setInfoVisible] = useState(false);
-	const [isArchiveOpen, setArchiveOpen] = useState(false);
+	const [isIndexOpen, setIndexOpen] = useState(false);
 
 	const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
@@ -144,15 +144,15 @@ const Portfolio = () => {
 		switch (search) {
 			case '?information':
 				setInfoVisible(true);
-				setArchiveOpen(false);
+				setIndexOpen(false);
 				break;
-			case '?archive':
+			case '?index':
 				setInfoVisible(false);
-				setArchiveOpen(true);
+				setIndexOpen(true);
 				break;
 			default:
 				setInfoVisible(false);
-				setArchiveOpen(false);
+				setIndexOpen(false);
 				break;
 		}
 
@@ -181,8 +181,8 @@ const Portfolio = () => {
 
 			<Header visible={isInfoVisible} onClick={clickOutsideInformation} />
 			<Archive
-				setArchiveOpen={setArchiveOpen}
-				isArchiveOpen={isArchiveOpen}
+				setIndexOpen={setIndexOpen}
+				isIndexOpen={isIndexOpen}
 				projects={projects}
 				setCurrentProject={setCurrentProject}
 				setIndex={setIndex}
@@ -213,12 +213,12 @@ const Portfolio = () => {
 					<button
 						className='index'
 						onClick={() => {
-							navigate('/?archive', {
+							navigate('/?index', {
 								replace: true,
 							});
-							setArchiveOpen(!isArchiveOpen);
+							setIndexOpen(!isIndexOpen);
 						}}>
-						Archive
+						Index
 					</button>
 				</span>
 			</aside>

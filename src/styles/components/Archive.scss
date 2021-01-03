@@ -20,6 +20,8 @@
 .archive__header {
 	display: flex;
 	justify-content: space-between;
+	position: sticky;
+	top: 0;
 
 	button {
 		background-color: transparent;
@@ -53,6 +55,12 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	padding-top: 20px;
+	align-content: center;
+	align-items: center;
+	margin: 0 -10px;
+
+	@media (min-width: 800px) {
+	}
 
 	@media (min-width: 1200px) {
 		padding-top: 50px;
@@ -61,12 +69,22 @@
 
 .archive__project {
 	width: 33.3%;
+	padding: 0 10px;
 
 	@media (min-width: 800px) {
 		width: 25%;
 	}
 
 	@media (min-width: 1200px) {
-		max-width: 300px;
+		width: 12.5%;
+	}
+}
+
+.archive__header--project-title {
+	transition: 400ms opacity ease;
+	opacity: 0;
+
+	&.visible {
+		opacity: 1;
 	}
 }

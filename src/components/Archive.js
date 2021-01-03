@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { navigate } from 'gatsby';
 
-export default ({ isArchiveOpen, setArchiveOpen, setCurrentProject, setIndex, projects }) => {
+const IndexList = ({ isIndexOpen, setIndexOpen, setCurrentProject, setIndex, projects }) => {
+	const [selectedTitle, setSelectedTitle] = useState(null);
+
 	return (
 		<section
 			className={classNames('archive', {
-				visible: isArchiveOpen,
+				visible: isIndexOpen,
 			})}>
 			<header className='archive__header'>
 				<nav className='archive__nav'>
@@ -15,19 +17,16 @@ export default ({ isArchiveOpen, setArchiveOpen, setCurrentProject, setIndex, pr
 							navigate('/', {
 								replace: true,
 							});
-							setArchiveOpen(false);
+							setIndexOpen(false);
 						}}>
 						Jarod Taber
 					</button>
-					<button
-						onClick={() => {
-							navigate('/', {
-								replace: true,
-							});
-							setArchiveOpen(false);
-						}}>
-						Work
-					</button>
+					<span
+						className={classNames('archive__header--project-title', {
+							visible: selectedTitle,
+						})}>
+						{selectedTitle}
+					</span>
 				</nav>
 				<button
 					className=''
@@ -35,33 +34,36 @@ export default ({ isArchiveOpen, setArchiveOpen, setCurrentProject, setIndex, pr
 						navigate('/', {
 							replace: true,
 						});
-						setArchiveOpen(false);
+						setIndexOpen(false);
+						setTimeout(() => setSelectedTitle(null), 500);
 					}}>
-					Close
+					Work
 				</button>
 			</header>
 			<section className='archive__list'>
 				{projects.map((item, index) => {
 					return (
-						<article
-							key={`project ${index}`}
-							className='archive__project'
-							onClick={() => {
-								setIndex(index);
-								setCurrentProject(projects[index]);
-								setArchiveOpen(false);
-								navigate('/', {
-									replace: true,
-								});
-							}}>
+						<article key={`project ${index}`} className='archive__project'>
 							{item.thumbnail && (
 								<img
-									src={null}
+									onClick={() => {
+										setCurrentProject(projects[index]);
+										setIndex(index);
+										setTimeout(() => {
+											setIndexOpen(false);
+											navigate('/', {
+												replace: true,
+											});
+										}, 250);
+									}}
+									onMouseEnter={() => {
+										setSelectedTitle(item?.credits[0]?.name);
+									}}
+									src={`${item.thumbnail.asset.url}?w=600`}
 									alt={item.title}
 									className='archive__project--img'
 								/>
 							)}
-							<p>{item.title}</p>
 						</article>
 					);
 				})}
@@ -69,3 +71,4 @@ export default ({ isArchiveOpen, setArchiveOpen, setCurrentProject, setIndex, pr
 		</section>
 	);
 };
+export default IndexList;
