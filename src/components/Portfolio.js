@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useStaticQuery, graphql, navigate, Link } from 'gatsby';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { useLocation } from '@reach/router';
 import { Swipeable } from 'react-swipeable';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import Footer from './Footer';
 import Button from './Button';
 import ProjectAsset from './ProjectAsset';
+import Archive from './Archive';
 import SEO from './seo';
 
-const Portfolio = props => {
+const Portfolio = () => {
 	const data = useStaticQuery(graphql`
 		{
 			allSanitySiteSettings {
@@ -85,8 +88,11 @@ const Portfolio = props => {
 			}
 		}
 	`);
+	const location = useLocation();
+	const { search } = location;
+
 	const [isInfoVisible, setInfoVisible] = useState(false);
-	const [isArchiveOpen, setArchiveOpen] = useState(false);
+	const [isIndexOpen, setIndexOpen] = useState(false);
 
 	const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
@@ -95,10 +101,6 @@ const Portfolio = props => {
 	);
 
 	const [index, setIndex] = useState(0);
-
-	const clickArchive = item => {
-		debugger;
-	};
 
 	const toggleLeft = () => {
 		let newIndex = index - 1;
@@ -122,7 +124,7 @@ const Portfolio = props => {
 		setCurrentProject(projects[newIndex]);
 	};
 
-	const handleClickEvent = e => {
+	const clickOutsideInformation = e => {
 		if (
 			e.target.nodeName === 'P' ||
 			e.target.nodeName === 'A' ||
@@ -132,10 +134,28 @@ const Portfolio = props => {
 		)
 			return;
 
+		navigate('/', {
+			replace: true,
+		});
 		setInfoVisible(false);
 	};
 
 	useEffect(() => {
+		switch (search) {
+			case '?information':
+				setInfoVisible(true);
+				setIndexOpen(false);
+				break;
+			case '?index':
+				setInfoVisible(false);
+				setIndexOpen(true);
+				break;
+			default:
+				setInfoVisible(false);
+				setIndexOpen(false);
+				break;
+		}
+
 		if (projects.length) {
 			const interval = setInterval(() => {
 				if (index === projects.length - 1) {
@@ -149,21 +169,33 @@ const Portfolio = props => {
 			}, 15000);
 			return () => clearInterval(interval);
 		}
-	}, [projects, index]);
+	}, [projects, index, search]);
 
 	return (
 		<main
-			className={`portfolio${currentProject.isFullScreen ? ' fullscreen' : ''}`}
+			className={classNames('portfolio', {
+				fullscreen: currentProject.isFullScreen,
+			})}
 			id={isInfoVisible ? 'information' : ''}>
 			<SEO title='JAROD TABER' />
 
-			<Header visible={isInfoVisible} onClick={handleClickEvent} />
+			<Header visible={isInfoVisible} onClick={clickOutsideInformation} />
+			<Archive
+				setIndexOpen={setIndexOpen}
+				isIndexOpen={isIndexOpen}
+				projects={projects}
+				setCurrentProject={setCurrentProject}
+				setIndex={setIndex}
+			/>
 
 			<aside className='title'>
 				<span className='title-container'>
 					<button
 						className='jarod'
 						onClick={() => {
+							navigate('/', {
+								replace: true,
+							});
 							setInfoVisible(false);
 						}}>
 						Jarod Taber
@@ -171,17 +203,23 @@ const Portfolio = props => {
 					<button
 						className='information'
 						onClick={() => {
-							setInfoVisible(!isInfoVisible);
+							navigate('/?information', {
+								replace: true,
+							});
+							setInfoVisible(true);
 						}}>
 						Information
 					</button>
-					{/* <button
+					<button
 						className='index'
 						onClick={() => {
-							setArchiveOpen(!isArchiveOpen);
+							navigate('/?index', {
+								replace: true,
+							});
+							setIndexOpen(!isIndexOpen);
 						}}>
-						Archive
-					</button> */}
+						Index
+					</button>
 				</span>
 			</aside>
 

@@ -12,9 +12,9 @@ const Footer = props => {
 			} ${props.infoCredits ? 'information' : ''}`}>
 			{props.credits && (
 				<ul className={`credits${visible ? ' visible' : ''}`}>
-					{props.credits.map(credit => {
+					{props.credits.map((credit, index) => {
 						return (
-							<li key={credit._key}>
+							<li key={credit._key || index}>
 								<span className='task'>{credit.task}</span>{' '}
 								<span className='name'>{credit.name}</span>
 							</li>
@@ -25,9 +25,9 @@ const Footer = props => {
 
 			{props.infoCredits && (
 				<ul className={`credits ${visible ? ' visible' : ''} information`}>
-					{props.infoCredits.map(credit => {
+					{props.infoCredits.map((credit, index) => {
 						return (
-							<li key={credit._key}>
+							<li key={credit._key || index}>
 								<span className='task'>{credit.task}</span>{' '}
 								<span className='name'>
 									<a href={credit.site} target='_blank' rel='noreferrer noopener'>
