@@ -70,9 +70,14 @@
 .archive__project {
 	width: 33.3%;
 	padding: 0 10px;
+	margin-bottom: 25px;
+	transition: 400ms opacity ease;
 
 	@media (min-width: 800px) {
 		width: 25%;
+		&:hover {
+			opacity: 0.5;
+		}
 	}
 
 	@media (min-width: 1200px) {
