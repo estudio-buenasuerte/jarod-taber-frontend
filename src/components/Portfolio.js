@@ -210,7 +210,7 @@ const Portfolio = () => {
 						}}>
 						Information
 					</button>
-					{/* <button
+					<button
 						className='index'
 						onClick={() => {
 							navigate('/?index', {
@@ -219,7 +219,7 @@ const Portfolio = () => {
 							setIndexOpen(!isIndexOpen);
 						}}>
 						Index
-					</button> */}
+					</button>
 				</span>
 			</aside>
 
