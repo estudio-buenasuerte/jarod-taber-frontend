@@ -32,6 +32,10 @@ const IndexList = ({
 }) => {
 	const [selectedTitle, setSelectedTitle] = useState(null);
 
+	const detectHover = title => {
+		setSelectedTitle(title);
+	};
+
 	return (
 		<section
 			onClick={onClick}
@@ -52,10 +56,10 @@ const IndexList = ({
 											navigate('/', {
 												replace: true,
 											});
-										}, 250);
+										}, 300);
 									}}
-									onMouseEnter={() => {
-										setSelectedTitle(item?.credits[0]?.name);
+									onPointerEnter={() => {
+										detectHover(item?.credits[0]?.name);
 									}}
 									src={`${item.projectThumbnail.image.asset.url}?w=600`}
 									alt={item.title}
@@ -75,8 +79,8 @@ const IndexList = ({
 											});
 										}, 250);
 									}}
-									onMouseEnter={() => {
-										setSelectedTitle(item?.credits[0]?.name);
+									onPointerEnter={() => {
+										detectHover(item?.credits[0]?.name);
 									}}>
 									<Video
 										src={item.projectThumbnail.video.asset.url}
