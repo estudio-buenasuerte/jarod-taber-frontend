@@ -6,7 +6,7 @@ import Video from './Video';
 
 const FOOTER_TRANSITION_STYLES = {
 	default: {
-		transition: `opacity 400ms ease`,
+		transition: `opacity 300ms ease`,
 	},
 	entering: {
 		opacity: 0,

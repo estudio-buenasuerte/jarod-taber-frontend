@@ -20,7 +20,7 @@ button {
 	display: flex;
 	flex-direction: column;
 	cursor: url(../images/arrow/cursor-black.svg), auto;
-	transition: 0.25s cursor linear;
+	transition: 300ms cursor linear;
 	.left,
 	.right {
 		z-index: 2;
@@ -83,7 +83,7 @@ button {
 				padding: 10px 0;
 			}
 			color: black;
-			transition: 0.25s color ease;
+			transition: 300ms color ease;
 			cursor: url(../images/arrow/cursor-black.svg), auto;
 			@include font;
 		}

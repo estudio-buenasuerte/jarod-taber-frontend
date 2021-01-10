@@ -190,7 +190,6 @@ const Portfolio = () => {
 				className={classNames('title', {
 					'title--index': isIndexVisible,
 				})}>
-				{/* <span className='title-container'> */}
 				<button
 					className='jarod'
 					onClick={() => {
@@ -198,30 +197,44 @@ const Portfolio = () => {
 							replace: true,
 						});
 						setInfoVisible(false);
+						setIndexVisible(false);
 					}}>
 					Jarod Taber
 				</button>
 				<button
 					className='information'
 					onClick={() => {
-						navigate('/?information', {
-							replace: true,
-						});
-						setInfoVisible(true);
+						if (!isInfoVisible) {
+							navigate('/?information', {
+								replace: true,
+							});
+							setInfoVisible(true);
+						} else {
+							navigate('/', {
+								replace: true,
+							});
+							setInfoVisible(false);
+						}
 					}}>
 					Information
 				</button>
 				<button
 					className='index'
 					onClick={() => {
-						navigate('/?index', {
-							replace: true,
-						});
-						setIndexVisible(!isIndexVisible);
+						if (!isIndexVisible) {
+							navigate('/?index', {
+								replace: true,
+							});
+							setIndexVisible(true);
+						} else {
+							navigate('/', {
+								replace: true,
+							});
+							setIndexVisible(false);
+						}
 					}}>
 					Index
 				</button>
-				{/* </span> */}
 			</aside>
 
 			<Swipeable onSwipedRight={toggleLeft} onSwipedLeft={toggleRight}>
