@@ -11,7 +11,7 @@
 	opacity: 0;
 	pointer-events: none;
 	cursor: url(../images/arrow/cursor-black.svg), auto;
-	transition: 300ms opacity ease;
+	transition: 400ms opacity ease;
 	&.visible {
 		opacity: 1;
 		pointer-events: all;
@@ -42,7 +42,7 @@
 	width: 33.3%;
 	padding: 0 10px;
 	margin-bottom: 25px;
-	transition: 300ms opacity ease;
+	transition: 400ms opacity ease;
 	opacity: 0.5;
 
 	video {
