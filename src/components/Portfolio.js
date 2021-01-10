@@ -88,7 +88,7 @@ const Portfolio = () => {
 	const { search } = location;
 
 	const [isInfoVisible, setInfoVisible] = useState(false);
-	const [isIndexOpen, setIndexOpen] = useState(false);
+	const [isIndexVisible, setIndexVisible] = useState(false);
 
 	const [projects] = useState(data.allSanitySiteSettings.nodes[0].projectOrder);
 
@@ -134,21 +134,22 @@ const Portfolio = () => {
 			replace: true,
 		});
 		setInfoVisible(false);
+		setIndexVisible(false);
 	};
 
 	useEffect(() => {
 		switch (search) {
 			case '?information':
 				setInfoVisible(true);
-				setIndexOpen(false);
+				setIndexVisible(false);
 				break;
 			case '?index':
 				setInfoVisible(false);
-				setIndexOpen(true);
+				setIndexVisible(true);
 				break;
 			default:
 				setInfoVisible(false);
-				setIndexOpen(false);
+				setIndexVisible(false);
 				break;
 		}
 
@@ -177,46 +178,50 @@ const Portfolio = () => {
 
 			<Header visible={isInfoVisible} onClick={clickOutsideInformation} />
 			<Archive
-				setIndexOpen={setIndexOpen}
-				isIndexOpen={isIndexOpen}
+				setIndexVisible={setIndexVisible}
+				isIndexVisible={isIndexVisible}
 				projects={projects}
 				setCurrentProject={setCurrentProject}
 				setIndex={setIndex}
+				onClick={clickOutsideInformation}
 			/>
 
-			<aside className='title'>
-				<span className='title-container'>
-					<button
-						className='jarod'
-						onClick={() => {
-							navigate('/', {
-								replace: true,
-							});
-							setInfoVisible(false);
-						}}>
-						Jarod Taber
-					</button>
-					<button
-						className='information'
-						onClick={() => {
-							navigate('/?information', {
-								replace: true,
-							});
-							setInfoVisible(true);
-						}}>
-						Information
-					</button>
-					<button
-						className='index'
-						onClick={() => {
-							navigate('/?index', {
-								replace: true,
-							});
-							setIndexOpen(!isIndexOpen);
-						}}>
-						Index
-					</button>
-				</span>
+			<aside
+				className={classNames('title', {
+					'title--index': isIndexVisible,
+				})}>
+				{/* <span className='title-container'> */}
+				<button
+					className='jarod'
+					onClick={() => {
+						navigate('/', {
+							replace: true,
+						});
+						setInfoVisible(false);
+					}}>
+					Jarod Taber
+				</button>
+				<button
+					className='information'
+					onClick={() => {
+						navigate('/?information', {
+							replace: true,
+						});
+						setInfoVisible(true);
+					}}>
+					Information
+				</button>
+				<button
+					className='index'
+					onClick={() => {
+						navigate('/?index', {
+							replace: true,
+						});
+						setIndexVisible(!isIndexVisible);
+					}}>
+					Index
+				</button>
+				{/* </span> */}
 			</aside>
 
 			<Swipeable onSwipedRight={toggleLeft} onSwipedLeft={toggleRight}>

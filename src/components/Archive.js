@@ -1,49 +1,45 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { SwitchTransition, Transition } from 'react-transition-group';
 import classNames from 'classnames';
 import { navigate } from 'gatsby';
 import Video from './Video';
 
-const IndexList = ({ isIndexOpen, setIndexOpen, setCurrentProject, setIndex, projects }) => {
+const FOOTER_TRANSITION_STYLES = {
+	default: {
+		transition: `opacity 400ms ease`,
+	},
+	entering: {
+		opacity: 0,
+	},
+	entered: {
+		opacity: 1,
+	},
+	exiting: {
+		opacity: 0,
+	},
+	exited: {
+		opacity: 0,
+	},
+};
+
+const IndexList = ({
+	isIndexVisible,
+	setIndexVisible,
+	setCurrentProject,
+	setIndex,
+	projects,
+	onClick,
+}) => {
 	const [selectedTitle, setSelectedTitle] = useState(null);
 
 	return (
 		<section
+			onClick={onClick}
 			className={classNames('archive', {
-				visible: isIndexOpen,
+				visible: isIndexVisible,
 			})}>
-			<header className='archive__header'>
-				<nav className='archive__nav'>
-					<button
-						onClick={() => {
-							navigate('/', {
-								replace: true,
-							});
-							setIndexOpen(false);
-						}}>
-						Jarod Taber
-					</button>
-					<span
-						className={classNames('archive__header--project-title', {
-							visible: selectedTitle,
-						})}>
-						{selectedTitle}
-					</span>
-				</nav>
-				<button
-					className=''
-					onClick={() => {
-						navigate('/', {
-							replace: true,
-						});
-						setIndexOpen(false);
-						setTimeout(() => setSelectedTitle(null), 500);
-					}}>
-					Work
-				</button>
-			</header>
 			<section className='archive__list'>
 				{projects.map((item, index) => {
-					debugger;
 					return (
 						<article key={`project ${index}`} className='archive__project'>
 							{item.projectThumbnail.image && (
@@ -52,7 +48,7 @@ const IndexList = ({ isIndexOpen, setIndexOpen, setCurrentProject, setIndex, pro
 										setCurrentProject(projects[index]);
 										setIndex(index);
 										setTimeout(() => {
-											setIndexOpen(false);
+											setIndexVisible(false);
 											navigate('/', {
 												replace: true,
 											});
@@ -73,7 +69,7 @@ const IndexList = ({ isIndexOpen, setIndexOpen, setCurrentProject, setIndex, pro
 										setCurrentProject(projects[index]);
 										setIndex(index);
 										setTimeout(() => {
-											setIndexOpen(false);
+											setIndexVisible(false);
 											navigate('/', {
 												replace: true,
 											});
@@ -93,6 +89,22 @@ const IndexList = ({ isIndexOpen, setIndexOpen, setCurrentProject, setIndex, pro
 					);
 				})}
 			</section>
+			<footer className='archive__footer'>
+				<SwitchTransition>
+					<Transition key={selectedTitle} mountOnEnter unmountOnExit appear timeout={400}>
+						{status => (
+							<span
+								id='archive__selected-project'
+								style={{
+									...FOOTER_TRANSITION_STYLES.default,
+									...FOOTER_TRANSITION_STYLES[status],
+								}}>
+								{selectedTitle}
+							</span>
+						)}
+					</Transition>
+				</SwitchTransition>
+			</footer>
 		</section>
 	);
 };
