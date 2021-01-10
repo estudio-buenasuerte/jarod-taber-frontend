@@ -56,7 +56,7 @@ const IndexList = ({
 											navigate('/', {
 												replace: true,
 											});
-										}, 300);
+										}, 400);
 									}}
 									onPointerEnter={() => {
 										detectHover(item?.credits[0]?.name);
@@ -77,7 +77,7 @@ const IndexList = ({
 											navigate('/', {
 												replace: true,
 											});
-										}, 250);
+										}, 400);
 									}}
 									onPointerEnter={() => {
 										detectHover(item?.credits[0]?.name);
