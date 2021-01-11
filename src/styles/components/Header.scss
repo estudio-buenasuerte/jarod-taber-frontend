@@ -12,7 +12,6 @@ header.information {
 	z-index: 1;
 	text-align: center;
 	cursor: url(../images/arrow/cursor-black.svg), auto;
-	line-height: 0.5;
 
 	&.visible {
 		opacity: 1;
@@ -20,6 +19,9 @@ header.information {
 		p {
 			z-index: 5;
 		}
+	}
+	p {
+		margin: 0;
 	}
 	a {
 		color: inherit;

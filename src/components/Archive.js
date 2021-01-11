@@ -77,7 +77,7 @@ const IndexList = ({
 											navigate('/', {
 												replace: true,
 											});
-										}, 400);
+										}, 500);
 									}}
 									onPointerEnter={() => {
 										detectHover(item?.credits[0]?.name);
@@ -95,7 +95,7 @@ const IndexList = ({
 			</section>
 			<footer className='archive__footer'>
 				<SwitchTransition>
-					<Transition key={selectedTitle} mountOnEnter unmountOnExit appear timeout={400}>
+					<Transition key={selectedTitle} mountOnEnter unmountOnExit appear timeout={100}>
 						{status => (
 							<span
 								id='archive__selected-project'
