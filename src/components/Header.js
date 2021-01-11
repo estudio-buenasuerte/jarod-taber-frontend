@@ -45,13 +45,12 @@ const Header = ({ visible, onClick }) => {
 
 	// return component
 	return (
-		<section
+		<header
 			className={`information ${headerVisible ? 'visible' : ''}`}
 			onClick={onClick}
 			role='banner'>
-			<header className={`information ${headerVisible ? 'visible' : ''}`}>
-				<BlockContent blocks={aboutText} serializers={serializers} />
-			</header>
+			<BlockContent blocks={aboutText} serializers={serializers} />
+
 			<Footer
 				infoCredits={[
 					{
@@ -66,7 +65,7 @@ const Header = ({ visible, onClick }) => {
 					},
 				]}
 			/>
-		</section>
+		</header>
 	);
 };
 
