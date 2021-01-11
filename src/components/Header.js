@@ -56,7 +56,7 @@ const Header = ({ visible, onClick }) => {
 					{
 						task: 'Design',
 						name: 'ADAM RIDGEWAY',
-						site: 'http://adamridgeway.com/',
+						site: 'https://adamridgeway.com/',
 					},
 					{
 						task: 'Development',
