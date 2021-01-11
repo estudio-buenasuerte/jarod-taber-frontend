@@ -126,7 +126,9 @@ const Portfolio = () => {
 			e.target.nodeName === 'A' ||
 			e.target.nodeName === 'SPAN' ||
 			e.target.nodeName === 'DIV' ||
-			e.target.nodeName === 'BUTTON'
+			e.target.nodeName === 'BUTTON' ||
+			e.target.nodeName === 'IMG' ||
+			e.target.nodeName === 'VIDEO'
 		)
 			return;
 
